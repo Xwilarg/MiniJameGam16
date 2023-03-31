@@ -1,3 +1,4 @@
+using MiniJamGame16.Item;
 using MiniJamGame16.SO;
 using System.Collections;
 using UnityEngine;
@@ -20,8 +21,10 @@ namespace MiniJamGame16.Player
         private IEnumerator Spawn()
         {
             yield return new WaitForSeconds(_info.TimeBetweenSpawn);
-            var go = Instantiate(_info.Items[Random.Range(0, _info.Items.Length)].Prefab, _spawnPoint);
+            var item = _info.Items[Random.Range(0, _info.Items.Length)];
+            var go = Instantiate(item.Prefab, _spawnPoint);
             go.transform.position = _spawnPoint.position;
+            go.GetComponent<ItemInstance>().Info = item;
             yield return Spawn();
         }
     }
