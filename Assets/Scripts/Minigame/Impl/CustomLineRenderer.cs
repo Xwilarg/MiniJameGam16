@@ -25,7 +25,7 @@ namespace MiniJamGame16.Minigame.Impl
                 DrawVerticesForPoint(pos, vh);
             }
 
-            for (var i = 0; i < _positions.Length; i++)
+            for (var i = 0; i < _positions.Length - 1; i++)
             {
                 var index = i * 2;
                 vh.AddTriangle(index, index + 1, index + 3);
