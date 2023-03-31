@@ -2,7 +2,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace MiniJamGame16.Minigame
+namespace MiniJamGame16.Minigame.Impl
 {
     public class IT : AMinigame
     {
