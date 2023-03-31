@@ -26,17 +26,31 @@ namespace MiniJamGame16.Minigame.Impl
             _target.enabled = true;
         }
 
+        public void EndLR(Transform t)
+        {
+            var button = (RectTransform)_target.transform.parent.transform;
+            if (_target != null)
+            {
+                _target.SetPositions(new[]
+                {
+                    Vector3.zero,
+                    t.position - transform.position
+                    - button.localPosition,
+                });
+                _target = null;
+            }
+        }
+
         private void Update()
         {
             if (_target != null)
             {
-                var container = (RectTransform)_target.transform.parent.parent.transform;
                 var button = (RectTransform)_target.transform.parent.transform;
                 _target.SetPositions(new[]
                 {
                     Vector3.zero,
                     (Vector3)Mouse.current.position.value - transform.position
-                    - new Vector3(button.localPosition.x, button.localPosition.y),
+                    - button.localPosition,
                 });
             }
         }
