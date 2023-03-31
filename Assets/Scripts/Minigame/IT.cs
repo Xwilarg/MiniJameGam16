@@ -18,7 +18,7 @@ namespace MiniJamGame16.Minigame
 
         public override void Init()
         {
-            _text = "a";
+            _text = _textAsset.text.Replace("\r", "");
             _referenceText.text = _text;
             _input.text = string.Empty;
             _input.Select(); // TODO: Only works the first time?
