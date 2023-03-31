@@ -1,9 +1,6 @@
 ﻿using System.Collections;
-using System.Linq;
-using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace MiniJamGame16.Minigame
 {
@@ -17,27 +14,32 @@ namespace MiniJamGame16.Minigame
 
         [SerializeField]
         private TextAsset _textAsset;
+        private string _text;
 
         private void Awake()
         {
-            _referenceText.text = _textAsset.text;
+            _text = _textAsset.text.Replace("\r", "");
+            _referenceText.text = _text;
         }
 
         public void OnTextEdit()
         {
             var length = _input.text.Length;
-            if (_textAsset.text[length - 1] != _input.text[length - 1])
+            if (_text[length - 1] != _input.text[length - 1])
             {
-                Debug.Log("Fixing");
                 _input.text = _input.text[..^1];
             }
             else
             {
-                while (length < _textAsset.text.Length && new[] { ' ', '\t', '\n', '\r' }.Contains(_textAsset.text[length]))
+                while (length < _text.Length && _text[length] == '\n')
                 {
                     length++;
-                    _input.text = _textAsset.text[..length];
-                    Debug.Log("|" + _textAsset.text[..length] + "|");
+                    _input.text = _text[..length];
+                    while (length < _text.Length && (_text[length] == ' ' || _text[length] == '\t'))
+                    {
+                        length++;
+                        _input.text = _text[..length];
+                    }
                 }
                 IEnumerator UpdateCaret()
                 {
@@ -47,11 +49,10 @@ namespace MiniJamGame16.Minigame
                 }
                 StartCoroutine(UpdateCaret());
             }
-            if (_textAsset.text == _input.text)
+            if (_text == _input.text)
             {
                 Debug.Log("Minigame done");
             }
-            Debug.Log("|" + _textAsset.text[..length] + "|");
         }
     }
 }
