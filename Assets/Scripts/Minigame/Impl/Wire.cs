@@ -7,11 +7,11 @@ namespace MiniJamGame16.Minigame.Impl
         [SerializeField]
         private WireGame _manager;
 
-        private LineRenderer _lr;
+        private CustomLineRenderer _lr;
 
         private void Awake()
         {
-            _lr = GetComponent<LineRenderer>();
+            _lr = GetComponentInChildren<CustomLineRenderer>();
         }
 
         public void Enable()

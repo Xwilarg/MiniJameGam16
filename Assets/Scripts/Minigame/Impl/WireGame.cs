@@ -5,7 +5,7 @@ namespace MiniJamGame16.Minigame.Impl
 {
     public class WireGame : AMinigame
     {
-        private LineRenderer _target;
+        private CustomLineRenderer _target;
 
         public override void Init()
         {
@@ -16,7 +16,7 @@ namespace MiniJamGame16.Minigame.Impl
             _target = null;
         }
 
-        public void SetLR(LineRenderer lr)
+        public void SetLR(CustomLineRenderer lr)
         {
             if (_target != null)
             {
