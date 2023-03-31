@@ -1,3 +1,4 @@
+using MiniJamGame16.Minigame;
 using MiniJamGame16.SO;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -27,7 +28,7 @@ namespace MiniJamGame16.Player
 
         public void OnMove(InputAction.CallbackContext value)
         {
-            if (_mov.magnitude != 0f && _detector.Item != null)
+            if (_mov.magnitude != 0f && _detector.Item != null && !MinigameManager.Instance.IsActive)
             {
                 _detector.Item.IsUsed = false; // We moved, is we were using an object we aren't anymore
             }
@@ -36,13 +37,18 @@ namespace MiniJamGame16.Player
 
         public void OnAction(InputAction.CallbackContext value)
         {
-            if (value.performed && _detector.Item != null)
+            if (value.performed && _detector.Item != null && !MinigameManager.Instance.IsActive)
             {
                 _detector.Item.IsUsed = !_detector.Item.IsUsed;
                 if (_detector.Item.IsUsed)
                 {
                     _detector.Item.transform.position = transform.position;
                     _mov = Vector2.zero;
+                    MinigameManager.Instance.Enable(_detector.Item.Info.Minigame, () =>
+                    {
+                        _detector.Item.IsUsed = false;
+                        Destroy(_detector.Item.gameObject);
+                    });
                 }
             }
         }
