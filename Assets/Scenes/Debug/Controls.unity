@@ -1075,6 +1075,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1126285138}
   - component: {fileID: 1126285139}
+  - component: {fileID: 1126285140}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1111,6 +1112,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnPoint: {fileID: 144324782}
   _info: {fileID: 11400000, guid: c4a3d4d0f50c2304a95705bcf5911f16, type: 2}
+--- !u!114 &1126285140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126285137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22499123fa8a0d34aa934ed225ecc2e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _minigames:
+  - Type: 0
+    Minigame: {fileID: 2134573233}
 --- !u!1 &1219039719
 GameObject:
   m_ObjectHideFlags: 0
@@ -1441,7 +1457,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2134573230
 RectTransform:
   m_ObjectHideFlags: 0

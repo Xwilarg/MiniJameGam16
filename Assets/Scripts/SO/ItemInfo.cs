@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using MiniJamGame16.Minigame;
+using UnityEngine;
 
 namespace MiniJamGame16.SO
 {
@@ -6,5 +7,6 @@ namespace MiniJamGame16.SO
     public class ItemInfo : ScriptableObject
     {
         public GameObject Prefab;
+        public MinigameType Minigame;
     }
 }

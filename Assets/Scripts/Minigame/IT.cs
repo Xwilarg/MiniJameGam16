@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace MiniJamGame16.Minigame
 {
-    public class IT : MonoBehaviour
+    public class IT : AMinigame
     {
         [SerializeField]
         private TMP_Text _referenceText;
@@ -16,10 +16,12 @@ namespace MiniJamGame16.Minigame
         private TextAsset _textAsset;
         private string _text;
 
-        private void Awake()
+        public override void Init()
         {
             _text = _textAsset.text.Replace("\r", "");
             _referenceText.text = _text;
+            _input.text = string.Empty;
+            _input.Select();
         }
 
         public void OnTextEdit()
@@ -51,7 +53,7 @@ namespace MiniJamGame16.Minigame
             }
             if (_text == _input.text)
             {
-                Debug.Log("Minigame done");
+                Complete();
             }
         }
     }
