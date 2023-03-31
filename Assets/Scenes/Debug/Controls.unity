@@ -627,7 +627,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2117845627}
+  m_Father: {fileID: 1237778142}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -647,14 +647,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac9045f8d84b6f14784a864acae9971a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 6160d1117124b9a47bd0b51ccc306dc6, type: 2}
-  m_Color: {r: 1, g: 0, b: 0, a: 0}
-  m_RaycastTarget: 0
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   _positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 200, y: 0, z: 0}
-  thickness: 1000
+  - {x: 0, y: 0, z: 0}
+  thickness: 10
 --- !u!222 &277447940
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1427,6 +1427,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1878593676}
+  - {fileID: 277447938}
   m_Father: {fileID: 2117845627}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1956,7 +1957,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1237778142}
-  - {fileID: 277447938}
   m_Father: {fileID: 907593865}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

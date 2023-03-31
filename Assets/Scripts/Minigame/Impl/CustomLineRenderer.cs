@@ -14,6 +14,7 @@ namespace MiniJamGame16.Minigame.Impl
         public void SetPositions(Vector3[] positions)
         {
             _positions = positions;
+            SetAllDirty();
         }
 
         protected override void OnPopulateMesh(VertexHelper vh)
@@ -39,11 +40,11 @@ namespace MiniJamGame16.Minigame.Impl
             vertex.color = color;
 
             vertex.position = new(-thickness / 2f, 0f);
-            vertex.position += new Vector3(point.x, point.y, point.z);
+            vertex.position += new Vector3(point.x, point.y);
             vh.AddVert(vertex);
 
             vertex.position = new(thickness / 2f, 0f);
-            vertex.position += new Vector3(point.x, point.y, point.z);
+            vertex.position += new Vector3(point.x, point.y);
             vh.AddVert(vertex);
         }
     }

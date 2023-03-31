@@ -26,19 +26,14 @@ namespace MiniJamGame16.Minigame.Impl
             _target.enabled = true;
         }
 
-        private Vector3 Convert(Vector2 v)
-        {
-            return new(v.x, v.y, -1f);
-        }
-
         private void Update()
         {
             if (_target != null)
             {
                 _target.SetPositions(new[]
                 {
-                    Convert(_target.transform.position),
-                    Convert(Mouse.current.position.value)
+                    Vector3.zero,
+                    (Vector3)Mouse.current.position.value - transform.position
                 });
             }
         }
