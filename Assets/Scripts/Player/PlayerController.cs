@@ -27,7 +27,7 @@ namespace MiniJamGame16.Player
 
         public void OnMove(InputAction.CallbackContext value)
         {
-            if (_detector.Item != null)
+            if (_mov.magnitude != 0f && _detector.Item != null)
             {
                 _detector.Item.IsUsed = false; // We moved, is we were using an object we aren't anymore
             }
@@ -42,6 +42,7 @@ namespace MiniJamGame16.Player
                 if (_detector.Item.IsUsed)
                 {
                     _detector.Item.transform.position = transform.position;
+                    _mov = Vector2.zero;
                 }
             }
         }
