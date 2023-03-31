@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class s_Manager_NPC : MonoBehaviour
@@ -10,7 +11,8 @@ public class s_Manager_NPC : MonoBehaviour
     [SerializeField] int currentWaitTime;              //The current wait time for the manager. Serialized for convenience.
     [SerializeField] int maxWaitTIme;                  //How long the manager can stay stopped for. Serialize for convenience.
     [SerializeField] int currentTargetPoint;          //Tracking which point they are currently targetting. Serialized for convenience.
-    [SerializeField] float walkSpeed;            //The movement speed for the manager.
+    [SerializeField] int walkSpeed;            //The movement speed for the manager.
+    [SerializeField] float minimumDistance;     //Distance minimum which the manager can be from his point until his actions change.
 
 
     // Start is called before the first frame update
@@ -22,32 +24,53 @@ public class s_Manager_NPC : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if(this.transform.position.x < pausePoints[currentTargetPoint].transform.position.x)          //Assuming left of current target point.
-        {
-            this.transform.position = new Vector3(transform.position.x + walkSpeed, transform.position.y, transform.position.z);
+        float distance = Vector3.Distance(pausePoints[currentTargetPoint].transform.position, transform.position);
 
-        }
-        else if( this.transform.position.x > pausePoints[currentTargetPoint].transform.position.x)      //Assuming right of current target point.
+        if (minimumDistance < distance)
         {
-            this.transform.position = new Vector3(transform.position.x - walkSpeed, transform.position.y, transform.position.z);
-
+            Walk();
         }
-        else //Assuming on target point.
+        else
         {
-            //Doing nothing for now.
-            Debug.Log("At Destintion.");
+            Debug.Log("Ping.");
 
             if(currentWaitTime != 0)
             {
-                currentWaitTime -= 1;
+                currentWaitTime--;
             }
             else
             {
+                currentWaitTime = maxWaitTIme;
+                ChangeDestination();
 
             }
 
+
+        }
+
+    }
+
+    void Walk()
+    {
+        if(transform.position.x < pausePoints[currentTargetPoint].transform.position.x) //NPC is left of destination
+        {
+            transform.Translate((Vector3.right) * Time.deltaTime * walkSpeed);
+            //Face sprite RIght
+
+        }
+        else //NPC is right of destination
+        {
+            transform.Translate((-Vector3.right) * Time.deltaTime * walkSpeed);
+            //Face Sprite Left
+
         }
     }
+
+    void ChangeDestination()
+    {
+            currentTargetPoint = Random.Range(0, pausePoints.Length);
+    }
+
 }
