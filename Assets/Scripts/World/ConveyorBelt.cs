@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using MiniJamGame16.Item;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace MiniJamGame16.World
@@ -8,13 +9,16 @@ namespace MiniJamGame16.World
         [SerializeField]
         private float Speed;
 
-        private readonly List<Rigidbody2D> _items = new();
+        private readonly List<ItemInstance> _items = new();
 
         private void FixedUpdate()
         {
             foreach (var item in _items)
             {
-                item.velocity = new(Speed * Time.deltaTime, item.velocity.y);
+                if (!item.IsUsed)
+                {
+                    item.SetXVelocity(Speed * Time.fixedDeltaTime);
+                }
             }
         }
 
@@ -22,7 +26,7 @@ namespace MiniJamGame16.World
         {
             if (collision.collider.CompareTag("Item"))
             {
-                _items.Add(collision.gameObject.GetComponent<Rigidbody2D>());
+                _items.Add(collision.gameObject.GetComponent<ItemInstance>());
             }
         }
 

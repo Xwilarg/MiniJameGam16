@@ -8,22 +8,22 @@ namespace MiniJamGame16.Player
 {
     public class ItemDetector : MonoBehaviour
     {
-        private readonly List<GameObject> _items = new();
+        private readonly List<ItemInstance> _items = new();
 
-        private ItemInfo Item
-            => _items.Any() ? _items[0].GetComponent<ItemInstance>().Info : null;
+        public ItemInstance Item
+            => _items.Any() ? _items[0] : null;
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.collider.CompareTag("Item"))
             {
-                _items.Add(collision.gameObject);
+                _items.Add(collision.gameObject.GetComponent<ItemInstance>());
             }
         }
 
         private void OnCollisionExit2D(Collision2D collision)
         {
-            _items.RemoveAll(x => x.GetInstanceID() == collision.gameObject.GetInstanceID());
+            _items.RemoveAll(x => x.gameObject.GetInstanceID() == collision.gameObject.GetInstanceID());
         }
     }
 }

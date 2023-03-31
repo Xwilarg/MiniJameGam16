@@ -11,21 +11,35 @@ namespace MiniJamGame16.Player
         private PlayerInfo _info;
 
         private Rigidbody2D _rb;
+        private ItemDetector _detector;
         private Vector2 _mov;
 
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
+            _detector = GetComponentInChildren<ItemDetector>();
         }
 
         private void FixedUpdate()
         {
-            _rb.velocity = new(_mov.x * Time.deltaTime * _info.Speed, _rb.velocity.y);
+            _rb.velocity = new(_mov.x * Time.fixedDeltaTime * _info.Speed, _rb.velocity.y);
         }
 
-        public void Move(InputAction.CallbackContext value)
+        public void OnMove(InputAction.CallbackContext value)
         {
+            if (_detector.Item != null)
+            {
+                _detector.Item.IsUsed = false; // We moved, is we were using an object we aren't anymore
+            }
             _mov = value.ReadValue<Vector2>().normalized;
+        }
+
+        public void OnAction(InputAction.CallbackContext value)
+        {
+            if (value.performed && _detector.Item != null)
+            {
+                _detector.Item.IsUsed = true;
+            }
         }
     }
 }
