@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -13,7 +14,7 @@ namespace MiniJamGame16.Minigame
 
         public bool IsActive { private set; get; }
 
-        private GameObject _initor;
+        public Action _onDone;
 
         private void Awake()
         {
@@ -24,15 +25,14 @@ namespace MiniJamGame16.Minigame
                 {
                     IsActive = false;
                     game.Minigame.gameObject.SetActive(false);
-                    Destroy(_initor);
-                    _initor = null;
+                    _onDone();
                 };
             }
         }
 
-        public void Enable(MinigameType type, GameObject initor)
+        public void Enable(MinigameType type, Action onDone)
         {
-            _initor = initor;
+            _onDone = onDone;
             var target = _minigames.FirstOrDefault(x => x.Type == type);
             Assert.IsNotNull(target);
             target.Minigame.gameObject.SetActive(true);

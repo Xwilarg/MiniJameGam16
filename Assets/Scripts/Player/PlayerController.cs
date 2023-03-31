@@ -44,7 +44,11 @@ namespace MiniJamGame16.Player
                 {
                     _detector.Item.transform.position = transform.position;
                     _mov = Vector2.zero;
-                    MinigameManager.Instance.Enable(_detector.Item.Info.Minigame, _detector.gameObject);
+                    MinigameManager.Instance.Enable(_detector.Item.Info.Minigame, () =>
+                    {
+                        _detector.Item.IsUsed = false;
+                        Destroy(_detector.Item.gameObject);
+                    });
                 }
             }
         }

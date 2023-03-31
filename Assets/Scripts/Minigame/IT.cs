@@ -18,15 +18,19 @@ namespace MiniJamGame16.Minigame
 
         public override void Init()
         {
-            _text = _textAsset.text.Replace("\r", "");
+            _text = "a";
             _referenceText.text = _text;
             _input.text = string.Empty;
-            _input.Select();
+            _input.Select(); // TODO: Only works the first time?
         }
 
         public void OnTextEdit()
         {
             var length = _input.text.Length;
+            if (length == 0)
+            {
+                return;
+            }
             if (_text[length - 1] != _input.text[length - 1])
             {
                 _input.text = _input.text[..^1];
