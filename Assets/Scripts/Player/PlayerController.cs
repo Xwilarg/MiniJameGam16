@@ -38,7 +38,11 @@ namespace MiniJamGame16.Player
         {
             if (value.performed && _detector.Item != null)
             {
-                _detector.Item.IsUsed = true;
+                _detector.Item.IsUsed = !_detector.Item.IsUsed;
+                if (_detector.Item.IsUsed)
+                {
+                    _detector.Item.transform.position = transform.position;
+                }
             }
         }
     }

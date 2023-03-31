@@ -13,15 +13,15 @@ namespace MiniJamGame16.Player
         public ItemInstance Item
             => _items.Any() ? _items[0] : null;
 
-        private void OnCollisionEnter2D(Collision2D collision)
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.collider.CompareTag("Item"))
+            if (collision.CompareTag("Item"))
             {
                 _items.Add(collision.gameObject.GetComponent<ItemInstance>());
             }
         }
 
-        private void OnCollisionExit2D(Collision2D collision)
+        private void OnTriggerExit2D(Collider2D collision)
         {
             _items.RemoveAll(x => x.gameObject.GetInstanceID() == collision.gameObject.GetInstanceID());
         }
