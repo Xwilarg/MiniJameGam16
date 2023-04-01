@@ -13,11 +13,6 @@ namespace Assets.Scripts.Minigame.Impl
 
         private float _xMax = 455f;
 
-        private void Awake()
-        {
-            ResetSpeed();
-        }
-
         private void ResetSpeed()
         {
             _baseSpeed = Random.Range(255, 2000);
@@ -38,6 +33,20 @@ namespace Assets.Scripts.Minigame.Impl
                 rTransform.anchoredPosition = new(_xMax, rTransform.anchoredPosition.y);
                 _goLeft = true;
             }
+        }
+
+        public void ResetCursor()
+        {
+            _goLeft = false;
+            var rTransform = (RectTransform)transform;
+            rTransform.anchoredPosition = new(0f, rTransform.anchoredPosition.y);
+            _baseSpeed = Random.Range(255, 2000);
+        }
+
+        public bool IsPosOk()
+        {
+            var rTransform = (RectTransform)transform;
+            return rTransform.anchoredPosition.x >= 185 && rTransform.anchoredPosition.x <= 275;
         }
     }
 }
