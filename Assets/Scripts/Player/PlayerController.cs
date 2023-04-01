@@ -58,6 +58,7 @@ namespace MiniJamGame16.Player
                     _mov = Vector2.zero;
                     MinigameManager.Instance.Enable(_detector.Item.Info.Minigame, () =>
                     {
+                        _animator.SetBool("IsGrabbing", false);
                         _detector.Item.IsUsed = false;
                         Destroy(_detector.Item.gameObject);
                     });
