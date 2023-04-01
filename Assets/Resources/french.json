@@ -1,7 +1,7 @@
 {
-    "tuto1": "T'es pas payé à regardé ton tel!\nAttrape un object avec E et répare le avant qu'il tombe dans l'incinérateur !",
-    "tuto2": "Ca à l'air pénible hein ?\nBah tant pis car c'est ton boulot !\nEt ne n'imagine pas utiliser ce bouton 'flox tape' quand je regarde !\nDouleur et sueur fait partie de notre slogan",
+    "TUTO1": "T'es pas payé à regardé ton tel!\nAttrape un object avec E et répare le avant qu'il tombe dans l'incinérateur !",
+    "TUTO2": "Ca à l'air pénible hein ?\nBah tant pis car c'est ton boulot !\nEt ne n'imagine pas utiliser ce bouton 'flox tape' quand je regarde !\nDouleur et sueur fait partie de notre slogan",
 
-    "itExplanations": "Copie le code pour corriger les bogues !",
-    "wiresExplanations": "Relies les fils pour corriger les défaults électriques"
+    "ITEXPLANATIONS": "Copie le code pour corriger les bogues !",
+    "WIRESEXPLANATIONS": "Relies les fils pour corriger les défaults électriques"
 }
