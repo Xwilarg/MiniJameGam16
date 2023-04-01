@@ -1,40 +1,53 @@
 using MiniJamGame16.Minigame;
 using UnityEngine;
 
+/// <summary>
+/// This is the script for the Manager NPC. This NPC will walk back and forth, left to right, pausing as they get to each point they are meant to stop at.
+/// If the player is detect and they attempt to cheat, script reaches out and punishes the player.
+/// </summary>
 public class s_Manager_NPC : MonoBehaviour
 {
-    //This is the script for the Manager NPC. This NPC will walk back and forth, left to right, pausing as they get to each point they are meant to stop at.
-    //If the player is detect and they attempt to cheat, script reaches out and punishes the player.
+    [SerializeField]
+    [Tooltip("Setup multiple points where the manager can stop")]
+    GameObject[] pausePoints;
+    
+    [SerializeField]
+    [Tooltip("How long the manager can stay stopped for. Serialize for convenience")]
+    float maxWaitTIme;
 
-    [SerializeField] GameObject[] pausePoints; //Setup multiple points where the manager can stop
-    float currentWaitTime;      //The current wait time for the manager. Serialized for convenience.
-    [SerializeField] float maxWaitTIme;          //How long the manager can stay stopped for. Serialize for convenience.
-    int currentTargetPoint;   //Tracking which point they are currently targetting. Serialized for convenience.
-    [SerializeField] int walkSpeed;            //The movement speed for the manager.
-    float minimumDistance = 0.1f;    //Distance minimum which the manager can be from his point until his actions change.
-    SpriteRenderer thisSpriteRenderer;         //For manipulating the direction of the NPC Sprite.
+    [SerializeField]
+    [Tooltip("Tracking which point they are currently targetting. Serialized for convenience")]
+    int currentTargetPoint;
 
-    Vector2 transform2D; //Origin for our Raycast (CircleCast).
-    [SerializeField] float circleCastRadius;    //Lets us set the size of the NPC's Raycast, which is used for detecting if NPC can catch the player cheating.
+    [SerializeField]
+    [Tooltip("The movement speed for the manager")]
+    int walkSpeed;
 
-    [SerializeField] bool punishmentEnabled = true; //If enabled and the player cheats, they get punished. This will only be disabled if the player has recently been caught cheating.
+    /// <summary>
+    /// Distance minimum which the manager can be from his point until his actions change
+    /// </summary>
+    float minimumDistance = 0.1f;
 
+    /// <summary>
+    /// For manipulating the direction of the NPC Sprite
+    /// </summary>
+    SpriteRenderer thisSpriteRenderer;
 
-    // Start is called before the first frame update
+    [SerializeField]
+    [Tooltip("Lets us set the size of the NPC's Raycast, which is used for detecting if NPC can catch the player cheating")]
+    float circleCastRadius
+
+    private bool _isLookingAtPlayer;
+
     void Awake()
     {
-
         currentTargetPoint = Random.Range(0, pausePoints.Length);     //At level load, randomize which point the manager is going to move to.
-        thisSpriteRenderer = this.GetComponent<SpriteRenderer>(); //Gets the Sprite Renderer so that we can minupulate the sprite (in particular, the direction the sprite is facing.
-
+        thisSpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         float distance = Vector3.Distance(pausePoints[currentTargetPoint].transform.position, transform.position); //We want the distance between the NPC and the targetPoint.
-                                                                                                                    //This helps with deciding which direction they will be walking.
-        transform2D =  new Vector2(transform.position.x, transform.position.y); //Used for circular raycast and Gizmo location.
 
         if (minimumDistance < distance) //If the minimumDistance away (due to float precision floating) is less than the distance between the targetPoint and the manager...
         {
@@ -47,34 +60,27 @@ public class s_Manager_NPC : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+
+        Collider2D hits = Physics2D.OverlapCircle(transform.position, circleCastRadius, LayerMask.GetMask("Player")); //Add player layer later.
+        _isLookingAtPlayer = hits != null;
+    }
+
     void Walk()
     {
-        if (transform.position.x < pausePoints[currentTargetPoint].transform.position.x) //NPC is left of destination, moving right
-        {
-            transform.Translate((Vector3.right) * Time.deltaTime * walkSpeed);  //Move to new location right.
-            thisSpriteRenderer.flipX = false;  //Face sprite RIght
-
-        }
-        else //NPC is right of destination, moving left.
-        {
-            transform.Translate((-Vector3.right) * Time.deltaTime * walkSpeed); //Move to the location left.
-            thisSpriteRenderer.flipX = true; //Face Sprite Left
-
-        }
+        var isGoingRight = transform.position.x < pausePoints[currentTargetPoint].transform.position.x;
+        transform.Translate(Time.deltaTime * walkSpeed * (isGoingRight ? Vector3.right : Vector3.left));
+        thisSpriteRenderer.flipX = !isGoingRight;
     }
 
     void ChangeDestination()
     {
-        int oldTargetPoint = currentTargetPoint; //Copy current target number to oldTarget
-        currentTargetPoint = Random.Range(0, pausePoints.Length);   //set current target to a new number.
-
-        if(oldTargetPoint != currentTargetPoint && punishmentEnabled == false) //if the old number and the new number are different & ppunishment is disabled
-        {
-            punishmentEnabled = true;   //Then re-enable raycast.
-        }
+        if (currentTargetPoint == pausePoints.Length - 1) currentTargetPoint = 0;
+        else currentTargetPoint++;
     }
 
-    private void OnDrawGizmos() //This is just visualizing our CircleCast. No other way to do it. Can be removed from execution later.
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;    //Make the gizmo Yellow.
         Gizmos.DrawWireSphere(transform.position, circleCastRadius); //Draws the Gizmo (easiest way to display a sphere raycast).
@@ -82,11 +88,8 @@ public class s_Manager_NPC : MonoBehaviour
 
     public void UseTape()
     {
-        Collider2D hits = Physics2D.OverlapCircle(transform2D, circleCastRadius, LayerMask.GetMask("Player")); //Add player layer later.
-
-        if (hits != null && punishmentEnabled)
+        if (_isLookingAtPlayer)
         {
-            punishmentEnabled = false;
             MinigameManager.Instance.IncreaseError();
         }
         else
@@ -94,5 +97,4 @@ public class s_Manager_NPC : MonoBehaviour
             MinigameManager.Instance.UseFlox();
         }
     }
-
 }
