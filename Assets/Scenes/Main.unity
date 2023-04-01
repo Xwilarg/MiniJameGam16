@@ -1089,6 +1089,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6515092551306256269, guid: 101fde2da900ee14db2cc7420c7d3dee, type: 3}
+      propertyPath: _pc
+      value: 
+      objectReference: {fileID: 2044671882}
+    - target: {fileID: 6515092551306256269, guid: 101fde2da900ee14db2cc7420c7d3dee, type: 3}
       propertyPath: pausePoints.Array.data[0]
       value: 
       objectReference: {fileID: 1842760882}
@@ -5052,6 +5056,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1982297851}
   m_CullTransparentMesh: 1
+--- !u!114 &2044671882 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2739969169914875284, guid: cc1f7ae2400597c438a5b38861558831, type: 3}
+  m_PrefabInstance: {fileID: 251224635354817180}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aea347b8300cc6a428b202eea7e6a741, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2088484933
 GameObject:
   m_ObjectHideFlags: 0
