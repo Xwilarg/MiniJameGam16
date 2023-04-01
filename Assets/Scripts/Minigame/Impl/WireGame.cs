@@ -26,7 +26,7 @@ namespace MiniJamGame16.Minigame.Impl
                 var a = Random.Range(3, 13);
                 var b = Random.Range(3, 13);
                 var c = (a * b) - target;
-                _wires[i].SetMath($"{a} X {b} - {c}", target);
+                _wires[i].SetMath($"{a} x {b} - {c}", target);
             }
         }
 

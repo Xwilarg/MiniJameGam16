@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3d0fd551b73465c4797cff0a99ff8bc2
+guid: 4bc42952fe0b0324f98fe68011c772d0
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - handwriting-black-draft_DEMO
+  - JMH Typewriter
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
