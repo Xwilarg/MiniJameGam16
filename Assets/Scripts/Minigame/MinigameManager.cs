@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MiniJamGame16.Tutorial;
+using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -29,6 +30,7 @@ namespace MiniJamGame16.Minigame
                     IsActive = false;
                     game.Minigame.gameObject.SetActive(false);
                     _floxbutton.SetActive(false);
+                    TutorialManager.Instance.AdvanceTutorial(TutorialAdvancement.GAME_END);
                     _onDone();
                 };
             }
@@ -53,6 +55,7 @@ namespace MiniJamGame16.Minigame
             {
                 game.Minigame.gameObject.SetActive(false);
             }
+            TutorialManager.Instance.AdvanceTutorial(TutorialAdvancement.GAME_END);
             _onDone();
         }
     }
