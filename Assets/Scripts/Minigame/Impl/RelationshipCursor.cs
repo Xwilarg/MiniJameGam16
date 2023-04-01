@@ -7,6 +7,9 @@ namespace Assets.Scripts.Minigame.Impl
         [SerializeField]
         private RectTransform _parent;
 
+        [SerializeField]
+        private RectTransform _marker;
+
         private float _baseSpeed;
 
         private bool _goLeft;
@@ -41,11 +44,14 @@ namespace Assets.Scripts.Minigame.Impl
             var rTransform = (RectTransform)transform;
             rTransform.anchoredPosition = new(0f, rTransform.anchoredPosition.y);
             _baseSpeed = Random.Range(255, 2000);
+            _marker.gameObject.SetActive(false);
         }
 
         public bool IsPosOk()
         {
             var rTransform = (RectTransform)transform;
+            _marker.gameObject.SetActive(true);
+            _marker.anchoredPosition = rTransform.anchoredPosition;
             return rTransform.anchoredPosition.x >= 185 && rTransform.anchoredPosition.x <= 275;
         }
     }

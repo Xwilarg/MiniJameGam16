@@ -7,5 +7,8 @@
 
     "ITEXPLANATIONS": "Copy the code to fix the bugs!",
     "WIRESEXPLANATIONS": "Link the wires to fix the electrical defaults!",
-    "RELEXPLANATIONS": "Fix this broken relationship!"
+    "RELEXPLANATIONS": "Fix this broken relationship!",
+
+    "PUMP": "Pump",
+    "LEFT": "left"
 }
