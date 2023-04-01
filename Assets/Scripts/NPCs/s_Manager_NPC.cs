@@ -54,6 +54,11 @@ public class s_Manager_NPC : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (MinigameManager.Instance.IsInspectionOn)
+        {
+            return;
+        }
+
         float distance = Vector3.Distance(pausePoints[currentTargetPoint].transform.position, transform.position); //We want the distance between the NPC and the targetPoint.
 
         if (minimumDistance < distance) //If the minimumDistance away (due to float precision floating) is less than the distance between the targetPoint and the manager...
