@@ -41,12 +41,15 @@ public class s_Manager_NPC : MonoBehaviour
     [SerializeField]
     private PlayerController _pc;
 
+    private Animator _animator;
+
     private bool _isLookingAtPlayer;
 
     void Awake()
     {
         currentTargetPoint = Random.Range(0, pausePoints.Length);     //At level load, randomize which point the manager is going to move to.
         _sr = GetComponent<SpriteRenderer>();
+        _animator = GetComponent<Animator>();
     }
 
     void FixedUpdate()
@@ -55,10 +58,12 @@ public class s_Manager_NPC : MonoBehaviour
 
         if (minimumDistance < distance) //If the minimumDistance away (due to float precision floating) is less than the distance between the targetPoint and the manager...
         {
+            _animator.SetBool("IsWalking", true);
             Walk(); //Walk.
         }
         else //But if the distance is less than the minimum distance.
         {
+            _animator.SetBool("IsWalking", false);
             ChangeDestination();
         }
 
