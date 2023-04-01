@@ -50,7 +50,7 @@ namespace MiniJamGame16.Minigame.Impl
 
         private IEnumerator Reload()
         {
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(1f);
             _button.interactable = true;
         }
     }
