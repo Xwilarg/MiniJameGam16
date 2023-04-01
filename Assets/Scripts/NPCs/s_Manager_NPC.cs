@@ -12,9 +12,6 @@ public class s_Manager_NPC : MonoBehaviour
     //This is the script for the Manager NPC. This NPC will walk back and forth, left to right, pausing as they get to each point they are meant to stop at.
     //If the player is detect and they attempt to cheat, script reaches out and punishes the player.
 
-    [SerializeField] PlayerController playerController;  //Setup the ability to detect if the player has hit the Duck Tape (Cheat) key/event.
-                                                        //This makes it so the player is punished if caught while within the NPC's Circular Raycast.
-                                                        //Remember to change from DummyPlayer to Player later!
     [SerializeField] GameObject[] pausePoints; //Setup multiple points where the manager can stop
     float currentWaitTime;      //The current wait time for the manager. Serialized for convenience.
     [SerializeField] float maxWaitTIme;          //How long the manager can stay stopped for. Serialize for convenience.
@@ -32,8 +29,6 @@ public class s_Manager_NPC : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        GameObject playerGameObject = GameObject.FindGameObjectWithTag("Player"); //Rather than search multiple times, just search once and keep getting from the reference.
-
 
         currentTargetPoint = Random.Range(0, pausePoints.Length);     //At level load, randomize which point the manager is going to move to.
         thisSpriteRenderer = this.GetComponent<SpriteRenderer>(); //Gets the Sprite Renderer so that we can minupulate the sprite (in particular, the direction the sprite is facing.
