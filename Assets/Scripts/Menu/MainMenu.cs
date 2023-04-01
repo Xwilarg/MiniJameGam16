@@ -18,7 +18,7 @@ namespace MiniJamGame16.Menu
 
         public void SetEnglish()
         {
-            Translate.Instance.CurrentLanguage = "french";
+            Translate.Instance.CurrentLanguage = "english";
         }
     }
 }
