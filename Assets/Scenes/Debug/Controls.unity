@@ -635,7 +635,7 @@ MonoBehaviour:
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_RichText: 1
-  m_GlobalFontAsset: {fileID: 11400000, guid: ba0714012c8099a4f9eab0622f2957f0, type: 2}
+  m_GlobalFontAsset: {fileID: 11400000, guid: d3d2def1b22504542ab85f8cb96098f3, type: 2}
   m_OnFocusSelectAll: 0
   m_ResetOnDeActivation: 1
   m_RestoreOriginalTextOnEscape: 1
@@ -771,7 +771,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ba0714012c8099a4f9eab0622f2957f0, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d3d2def1b22504542ab85f8cb96098f3, type: 2}
   m_sharedMaterial: {fileID: 6093365411607696308, guid: ba0714012c8099a4f9eab0622f2957f0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -835,7 +835,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &159588343
@@ -3338,8 +3338,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u200B"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ba0714012c8099a4f9eab0622f2957f0, type: 2}
-  m_sharedMaterial: {fileID: 6093365411607696308, guid: ba0714012c8099a4f9eab0622f2957f0, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d3d2def1b22504542ab85f8cb96098f3, type: 2}
+  m_sharedMaterial: {fileID: -5934927923429500334, guid: d3d2def1b22504542ab85f8cb96098f3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3402,7 +3402,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1375666766
@@ -4338,7 +4338,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _referenceText: {fileID: 159588342}
   _input: {fileID: 123852935}
-  _textAsset: {fileID: 4900000, guid: 59203bc48f830b344857e201e0dbe6f5, type: 3}
+  _textAsset:
+  - {fileID: 4900000, guid: 59203bc48f830b344857e201e0dbe6f5, type: 3}
+  - {fileID: 4900000, guid: 5432832fbde099c4abde06968d244b4a, type: 3}
+  - {fileID: 4900000, guid: 07ac5e0c114ccac44b98824e4271e453, type: 3}
 --- !u!1001 &103213341220542776
 PrefabInstance:
   m_ObjectHideFlags: 0

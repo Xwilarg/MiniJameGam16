@@ -13,12 +13,12 @@ namespace MiniJamGame16.Minigame.Impl
         private TMP_InputField _input;
 
         [SerializeField]
-        private TextAsset _textAsset;
+        private TextAsset[] _textAsset;
         private string _text;
 
         public override void Init()
         {
-            _text = _textAsset.text.Replace("\r", "");
+            _text = _textAsset[Random.Range(0, _textAsset.Length)].text.Replace("\r", "");
             _referenceText.text = _text;
             _input.text = string.Empty;
             _input.Select(); // TODO: Only works the first time?

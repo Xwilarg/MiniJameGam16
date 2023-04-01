@@ -1,0 +1,12 @@
+public abstract class CheeseFixer : BugFixer<Cheese>
+{
+    public override void FixBug(Cheese data)
+    {
+        if (data.Smell < 50)
+        {
+            data.Wait();
+            return;
+        }
+        if (!data.IsMelted) Raclette.Use(data);
+    }
+}

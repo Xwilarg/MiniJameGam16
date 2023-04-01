@@ -1,0 +1,8 @@
+public abstract class FranceFixer : BugFixer<Country>
+{
+    public override void FixBug(Country data)
+    {
+        if (data.ISO != "fr") throw new NotImplementedException();
+        data.Revolution(useGuillotine: data.Regime == Governement.MONARCHY);
+    }
+}
