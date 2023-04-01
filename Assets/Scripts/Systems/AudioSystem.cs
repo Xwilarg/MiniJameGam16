@@ -8,9 +8,15 @@ namespace MiniJamGame16.Systems
         [SerializeField] private AudioSource _soundsSource;
 
         public static AudioSystem Instance { get; private set; }
-        protected virtual void Awake() => Instance = this;
 
-        protected virtual void OnApplicationQuit() {
+        private void Awake()
+        {
+            if (Instance != null) Destroy(gameObject);
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+
+        private void OnApplicationQuit() {
             Instance = null;
             Destroy(gameObject);
         }

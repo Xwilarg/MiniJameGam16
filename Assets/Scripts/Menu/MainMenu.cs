@@ -1,4 +1,5 @@
-﻿using MiniJamGame16.Translation;
+﻿using MiniJamGame16.Systems;
+using MiniJamGame16.Translation;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,6 +7,13 @@ namespace MiniJamGame16.Menu
 {
     public class MainMenu : MonoBehaviour
     {
+        [SerializeField] private AudioClip _menuAudio;
+
+        private void Awake()
+        {
+            AudioSystem.Instance.PlayMusic(_menuAudio);
+        }
+
         public void Play()
         {
             SceneManager.LoadScene("Main");
