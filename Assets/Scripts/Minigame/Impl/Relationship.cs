@@ -40,17 +40,17 @@ namespace MiniJamGame16.Minigame.Impl
                 {
                     Complete();
                 }
-                else
-                {
-                    _button.interactable = false;
-                    StartCoroutine(Reload());
-                }
+            }
+            else
+            {
+                _button.interactable = false;
+                StartCoroutine(Reload());
             }
         }
 
         private IEnumerator Reload()
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(3f);
             _button.interactable = true;
         }
     }
