@@ -4,9 +4,7 @@ public abstract class CheeseFixer : BugFixer<Cheese>
     {
         if (data.Smell < 50)
         {
-            data.Wait();
             return;
         }
-        if (!data.IsMelted) Raclette.Use(data);
     }
 }

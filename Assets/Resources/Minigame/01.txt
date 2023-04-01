@@ -2,13 +2,7 @@ public abstract class DroneFixer : BugFixer<Drone>
 {
     public override void FixBug(Drone data)
     {
-        if (data.IsGoingToCrash()) data.Dont();
-        if (data.IsOutOfBattery())
-        {
-            foreach (var battery in data.Batteries)
-            {
-                battery.Recharge();
-            }
-        }
+        if (data.IsGoingToCrashIntoEachOther())
+            data.Dont();
     }
 }

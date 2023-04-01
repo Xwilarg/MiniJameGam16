@@ -3367,7 +3367,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _referenceText: {fileID: 159588342}
   _input: {fileID: 123852935}
-  _textAsset: {fileID: 4900000, guid: 59203bc48f830b344857e201e0dbe6f5, type: 3}
+  _textAsset:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1001 &103213341220542776
 PrefabInstance:
   m_ObjectHideFlags: 0
