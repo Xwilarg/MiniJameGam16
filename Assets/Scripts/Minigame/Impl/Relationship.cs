@@ -18,6 +18,9 @@ namespace MiniJamGame16.Minigame.Impl
 
         private int _pumpCount;
 
+        [SerializeField]
+        public int gameScoreValue = 250;
+
         private void Awake()
         {
             _bText = _button.GetComponentInChildren<TMP_Text>();
@@ -38,7 +41,8 @@ namespace MiniJamGame16.Minigame.Impl
                 _bText.text = $"{Translate.Instance.Tr("PUMP").ToUpperInvariant()}\n{_pumpCount} {Translate.Instance.Tr("LEFT").ToUpperInvariant()}";
                 if (_pumpCount == 0)
                 {
-                    Complete();
+                    Complete(gameScoreValue);
+                    Debug.Log(gameScoreValue);
                 }
             }
             else

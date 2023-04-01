@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Xml.Schema;
+using UnityEngine;
 
 namespace MiniJamGame16.SO
 {
@@ -7,5 +8,8 @@ namespace MiniJamGame16.SO
     {
         [Tooltip("Speed of the player")]
         public float Speed;
+
+
+
     }
 }

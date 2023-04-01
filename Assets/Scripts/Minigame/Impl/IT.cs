@@ -16,6 +16,8 @@ namespace MiniJamGame16.Minigame.Impl
         private TextAsset[] _textAsset;
         private string _text;
 
+        public int gameScoreValue = 100;
+
         public override void Init()
         {
             _text = _textAsset[Random.Range(0, _textAsset.Length)].text.Replace("\r", "");
@@ -57,7 +59,8 @@ namespace MiniJamGame16.Minigame.Impl
             }
             if (_text == _input.text)
             {
-                Complete();
+                Complete(gameScoreValue);
+                Debug.Log(gameScoreValue);
             }
         }
     }

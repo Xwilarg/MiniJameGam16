@@ -11,6 +11,8 @@ namespace MiniJamGame16.Minigame.Impl
         [SerializeField]
         private Wire[] _wires;
 
+        public int gameScoreValue = 500;
+
         public override void Init()
         {
             if (_target != null)
@@ -61,7 +63,8 @@ namespace MiniJamGame16.Minigame.Impl
                         return;
                     }
                 }
-                Complete();
+                Complete(gameScoreValue);
+                Debug.Log(gameScoreValue);
             }
         }
 
