@@ -3259,7 +3259,7 @@ MonoBehaviour:
   - Type: 1
     Minigame: {fileID: 2117845631}
   - Type: 2
-    Minigame: {fileID: 612136617}
+    Minigame: {fileID: 0}
   _floxbutton: {fileID: 1048032890}
 --- !u!114 &1126285141
 MonoBehaviour:
@@ -5175,10 +5175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _referenceText: {fileID: 159588342}
   _input: {fileID: 123852935}
-  _textAsset:
-  - {fileID: 4900000, guid: 59203bc48f830b344857e201e0dbe6f5, type: 3}
-  - {fileID: 4900000, guid: 5432832fbde099c4abde06968d244b4a, type: 3}
-  - {fileID: 4900000, guid: 07ac5e0c114ccac44b98824e4271e453, type: 3}
+  _textAsset: {fileID: 0}
 --- !u!1001 &103213341220542776
 PrefabInstance:
   m_ObjectHideFlags: 0
