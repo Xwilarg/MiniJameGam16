@@ -35,7 +35,7 @@ public class s_Manager_NPC : MonoBehaviour
 
     [SerializeField]
     [Tooltip("Lets us set the size of the NPC's Raycast, which is used for detecting if NPC can catch the player cheating")]
-    float circleCastRadius
+    float circleCastRadius;
 
     private bool _isLookingAtPlayer;
 
