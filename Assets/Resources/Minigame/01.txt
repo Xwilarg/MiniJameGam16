@@ -10,13 +10,3 @@ class CheeseFondue : AAmazing
 
     public bool IsCheeseMelted { private set; get; }
 }
-
-abstract class AAmazing
-{
-    public virtual void Use()
-    {
-        if (!IsAmazing) throw new InvalidOperationException("Object isn't amazing enough");
-    }
-
-    public abstract bool IsAmazing { get; }
-}

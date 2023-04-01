@@ -23,8 +23,8 @@ namespace MiniJamGame16.Minigame.Impl
             for (int i = 0; i < _wires.Length; i++)
             {
                 var target = i + 1;
-                var a = Random.Range(3, 20);
-                var b = Random.Range(3, 20);
+                var a = Random.Range(3, 13);
+                var b = Random.Range(3, 13);
                 var c = (a * b) - target;
                 _wires[i].SetMath($"{a} * {b} - {c}", target);
             }
