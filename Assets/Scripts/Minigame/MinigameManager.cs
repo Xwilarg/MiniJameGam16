@@ -42,8 +42,8 @@ namespace MiniJamGame16.Minigame
                     _floxbutton.SetActive(false);
                     TutorialManager.Instance.AdvanceTutorial(TutorialAdvancement.GAME_END);
                     _onDone();
-                    _inspectionPercent += 10;
-                    if (_inspectionPercent > 100) _inspectionPercent = 100;
+                    _inspectionPercent -= 50;
+                    if (_inspectionPercent < 0) _inspectionPercent = 0;
                     _inspectionText.text = $"{Translate.Instance.Tr("INSPECTIONCHANCES").ToUpperInvariant()} {_inspectionPercent}%";
                     _inspectionText.color = Color.white;
                 };
@@ -61,7 +61,7 @@ namespace MiniJamGame16.Minigame
             _floxbutton.SetActive(!IsInspectionOn);
             if (IsInspectionOn)
             {
-                _inspectionText.text = Translate.Instance.Tr("INSPECTIONON");
+                _inspectionText.text = Translate.Instance.Tr("INSPECTIONON").ToUpperInvariant();
                 _inspectionText.color = Color.red;
             }
             IsActive = true;
@@ -84,8 +84,8 @@ namespace MiniJamGame16.Minigame
             }
             TutorialManager.Instance.AdvanceTutorial(TutorialAdvancement.GAME_END);
             _onDone();
-            _inspectionPercent -= 50;
-            if (_inspectionPercent < 0) _inspectionPercent = 0;
+            _inspectionPercent += 10;
+            if (_inspectionPercent > 100) _inspectionPercent = 100;
             _inspectionText.text = $"{Translate.Instance.Tr("INSPECTIONCHANCES").ToUpperInvariant()} {_inspectionPercent}%";
             _inspectionText.color = Color.white;
         }
