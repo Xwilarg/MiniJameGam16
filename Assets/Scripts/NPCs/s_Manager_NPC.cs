@@ -1,3 +1,4 @@
+using MiniJamGame16.Minigame;
 using MiniJamGame16.Player;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,31 +20,19 @@ public class s_Manager_NPC : MonoBehaviour
     [SerializeField] int currentTargetPoint;   //Tracking which point they are currently targetting. Serialized for convenience.
     [SerializeField] int walkSpeed;            //The movement speed for the manager.
     [SerializeField] float minimumDistance;    //Distance minimum which the manager can be from his point until his actions change.
-    [SerializeField] SpriteRenderer thisSpriteRenderer;         //For manipulating the direction of the NPC Sprite.
-
-    PlayerInput playerInput;
-    InputAction ductTapeAction; //For use with the new input system. Used for detecting if the player has been caught or not while player is touched by NPC CircleCast.
+    private SpriteRenderer thisSpriteRenderer;         //For manipulating the direction of the NPC Sprite.
 
     Vector2 transform2D; //Origin for our Raycast (CircleCast).
     [SerializeField] float circleCastRadius;    //Lets us set the size of the NPC's Raycast, which is used for detecting if NPC can catch the player cheating.
 
     [SerializeField] bool punishmentEnabled = true; //If enabled and the player cheats, they get punished. This will only be disabled if the player has recently been caught cheating.
 
-
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         GameObject playerGameObject = GameObject.FindGameObjectWithTag("Player"); //Rather than search multiple times, just search once and keep getting from the reference.
-        playerController = playerGameObject.GetComponent<PlayerController>();            //Get the player controller (Current test DummYPlayer controller. Replace with real one later.
-
 
         currentTargetPoint = Random.Range(0, pausePoints.Length);     //At level load, randomize which point the manager is going to move to.
-        thisSpriteRenderer = this.GetComponent<SpriteRenderer>(); //Gets the Sprite Renderer so that we can minupulate the sprite (in particular, the direction the sprite is facing.
-
-        playerInput = playerController.GetComponent<PlayerInput>(); //Get reference to access the players action list.
-        ductTapeAction = playerInput.actions["DuctTape"];           //Get reference to the specific action we wish to monitor. 
-                                                                    //Currently null, which is correct because the action "DuctTape" doesn't exist in the playerInput.
-
+        thisSpriteRenderer = this.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -60,24 +49,7 @@ public class s_Manager_NPC : MonoBehaviour
         }
         else //But if the distance is less than the minimum distance.
         {
-            Debug.Log("Ping."); //Debug message.
-
-            //Branching action based on the time until it's allowed to walk again.
-            if (currentWaitTime > 0.0f)  //If the time is not zero.
-            {
-                currentWaitTime -= Time.deltaTime;  //Decrement the time by deltaTime..
-                CastCircleCast();   //And cast the circlular Raycast.
-            }
-            else //But if the time is zero.
-            {
-                currentWaitTime = maxWaitTIme; //reset the timer that it must wait.
-                ChangeDestination();    //Set a new destination. This could end up being the same point that it is on, which case it will re-roll on the next frame.
-                                        //If the destination is at a different location than the current position, the NPC will walk.
-                                        //If not, it's just waiting at the same spot and re-reolls a new destination.
-                                            //This has the addition of acting like a second layer of rng. It could stay because the location is repeatedly the same, or it moves.
-
-            }
-
+            ChangeDestination();
         }
 
     }
@@ -109,7 +81,7 @@ public class s_Manager_NPC : MonoBehaviour
         }
     }
 
-    void CastCircleCast()
+    public void DuctTape()
     {
         RaycastHit2D[] hits = Physics2D.CircleCastAll(transform2D, circleCastRadius, transform.right, LayerMask.NameToLayer("Player")); //Add player layer later.
 
@@ -118,25 +90,15 @@ public class s_Manager_NPC : MonoBehaviour
             Debug.Log("Hit: " + hit.collider.name + "\n"); //Remove me later.
         }
 
-        //Real detection code.
-        if(hits.Any<RaycastHit2D>()) //If the player is detected, they are in view, and may now be punished if they hit the Duct Tape Button.
+        if (punishmentEnabled && hits.Any())
         {
-
-            if (ductTapeAction.IsPressed() && punishmentEnabled == true){ //Replaced "Input.GetKeyDown(KeyCode.Space)" with new input system. SHOULD be correct.
-                PunishmentEvent(); //Trigger punishement.
-                punishmentEnabled= false; //Bacause the player has been punished, we want to take some time to ensure the player isn't punished repeatedly rapidly.
-                                            //So the punishment will be re-enabled once the NPC is moving again, and disabled while waiting at the same spot.
-            }
-             
-            Debug.Log("Hit: " + hits[0].collider.name + "\n");  //No need to go anywhere above the first index, as all indexes will have the same information.
-
-            Debug.Log("Hits size: " +hits.Length);  //Just checking if it was a per pixel thing. It's per object.
+            PunishmentEvent(); //Trigger punishement.
+            punishmentEnabled = false;
         }
-        //This code block checks an index of 1 size every frame. So it will be quite accurate to detect the instant the player cheats.
-        //Will now impletement a way to stop checking if the cheat until they've moved away.
-
-        //Now needing to implement logic for what happens only when the player makes a specific action, only while the raycast is touching.
-        
+        else
+        {
+            MinigameManager.Instance.UseFlox();
+        }
     }
 
     private void OnDrawGizmos() //This is just visualizing our CircleCast. No other way to do it. Can be removed from execution later.
