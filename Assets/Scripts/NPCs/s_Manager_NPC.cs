@@ -9,9 +9,8 @@ using UnityEngine.InputSystem;
 
 public class s_Manager_NPC : MonoBehaviour
 {
-    //V2
-
     //This is the script for the Manager NPC. This NPC will walk back and forth, left to right, pausing as they get to each point they are meant to stop at.
+    //If the player is detect and they attempt to cheat, script reaches out and punishes the player.
 
     [SerializeField] PlayerController playerController;  //Setup the ability to detect if the player has hit the Duck Tape (Cheat) key/event.
                                                         //This makes it so the player is punished if caught while within the NPC's Circular Raycast.
@@ -34,7 +33,6 @@ public class s_Manager_NPC : MonoBehaviour
     void Awake()
     {
         GameObject playerGameObject = GameObject.FindGameObjectWithTag("Player"); //Rather than search multiple times, just search once and keep getting from the reference.
-        playerController = playerGameObject.GetComponent<PlayerController>();            //Get the player controller (Current test DummYPlayer controller. Replace with real one later.
 
 
         currentTargetPoint = Random.Range(0, pausePoints.Length);     //At level load, randomize which point the manager is going to move to.
