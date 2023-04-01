@@ -1,14 +1,16 @@
+using MiniJamGame16.Player;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class s_Manager_NPC : MonoBehaviour
 {
     //This is the script for the Manager NPC. This NPC will walk back and forth, left to right, pausing as they get to each point they are meant to stop at.
 
-    [SerializeField] DummyPlayer playerController;  //Setup the ability to detect if the player has hit the Duck Tape (Cheat) key/event.
+    [SerializeField] PlayerController playerController;  //Setup the ability to detect if the player has hit the Duck Tape (Cheat) key/event.
                                                         //This makes it so the player is punished if caught while within the NPC's Circular Raycast.
                                                         //Remember to change from DummyPlayer to Player later!
     [SerializeField] GameObject[] pausePoints; //Setup multiple points where the manager can stop
@@ -17,7 +19,10 @@ public class s_Manager_NPC : MonoBehaviour
     [SerializeField] int currentTargetPoint;   //Tracking which point they are currently targetting. Serialized for convenience.
     [SerializeField] int walkSpeed;            //The movement speed for the manager.
     [SerializeField] float minimumDistance;    //Distance minimum which the manager can be from his point until his actions change.
-    SpriteRenderer thisSpriteRenderer;         //For manipulating the direction of the NPC Sprite.
+    [SerializeField] SpriteRenderer thisSpriteRenderer;         //For manipulating the direction of the NPC Sprite.
+
+    PlayerInput playerInput;
+    InputAction ductTapeAction; //For use with the new input system. Used for detecting if the player has been caught or not while player is touched by NPC CircleCast.
 
     Vector2 transform2D; //Origin for our Raycast (CircleCast).
     [SerializeField] float circleCastRadius;    //Lets us set the size of the NPC's Raycast, which is used for detecting if NPC can catch the player cheating.
@@ -28,13 +33,17 @@ public class s_Manager_NPC : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<DummyPlayer>();
-        playerController.ReferenceConfirmation(); //Just to confirm if the player is referenced correctly. Can be removed later.
+        GameObject playerGameObject = GameObject.FindGameObjectWithTag("Player"); //Rather than search multiple times, just search once and keep getting from the reference.
+        playerController = playerGameObject.GetComponent<PlayerController>();            //Get the player controller (Current test DummYPlayer controller. Replace with real one later.
+
 
         currentTargetPoint = Random.Range(0, pausePoints.Length);     //At level load, randomize which point the manager is going to move to.
-        Debug.Log(currentTargetPoint);  //Which location is the NPC moving to at spawn.
-        Debug.Log(pausePoints.Length);  //Sanity check, remove later.
         thisSpriteRenderer = this.GetComponent<SpriteRenderer>(); //Gets the Sprite Renderer so that we can minupulate the sprite (in particular, the direction the sprite is facing.
+
+        playerInput = playerController.GetComponent<PlayerInput>(); //Get reference to access the players action list.
+        ductTapeAction = playerInput.actions["DuctTape"];           //Get reference to the specific action we wish to monitor. 
+                                                                    //Currently null, which is correct because the action "DuctTape" doesn't exist in the playerInput.
+
     }
 
     // Update is called once per frame
@@ -106,14 +115,14 @@ public class s_Manager_NPC : MonoBehaviour
 
         foreach (RaycastHit2D hit in hits) //This can be removed later. Simply used to tell me if something is being detected.
         {
-            Debug.Log("Hit: " + hit.collider.name + "\n");
+            Debug.Log("Hit: " + hit.collider.name + "\n"); //Remove me later.
         }
 
         //Real detection code.
         if(hits.Any<RaycastHit2D>()) //If the player is detected, they are in view, and may now be punished if they hit the Duct Tape Button.
         {
 
-            if(Input.GetKeyDown(KeyCode.Space) && punishmentEnabled == true){ //Replace "Input.GetKeyDown(KeyCode.Space)" with a call to the player controller.
+            if (ductTapeAction.IsPressed() && punishmentEnabled == true){ //Replaced "Input.GetKeyDown(KeyCode.Space)" with new input system. SHOULD be correct.
                 PunishmentEvent(); //Trigger punishement.
                 punishmentEnabled= false; //Bacause the player has been punished, we want to take some time to ensure the player isn't punished repeatedly rapidly.
                                             //So the punishment will be re-enabled once the NPC is moving again, and disabled while waiting at the same spot.
@@ -141,7 +150,7 @@ public class s_Manager_NPC : MonoBehaviour
         Debug.Log("Punished!\n"); //Just outputting that the player has been punished for now for testing. Works correctly.
 
         //Thinking ahead, the punishment should be within the player controller or elsewhere. So coded it that if we're referencing something, we cause the punishement elsewhere.
-        playerController.PunishmentForPlayer(); //If we're punishing the player elsewhere instead of here, we need a reference, so this is it.
+        //playerController.PunishmentForPlayer(); //If we're punishing the player elsewhere instead of here, we need a reference, so this is it.
 
     }
 
