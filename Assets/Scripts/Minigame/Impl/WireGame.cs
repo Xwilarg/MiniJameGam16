@@ -51,7 +51,7 @@ namespace MiniJamGame16.Minigame.Impl
                 {
                     Vector3.zero,
                     w.transform.position - transform.position
-                    - button.localPosition,
+                    - button.localPosition + Vector3.up * 15f,
                 });
                 _target = null;
                 foreach (var wire in _wires)
@@ -74,7 +74,7 @@ namespace MiniJamGame16.Minigame.Impl
                 {
                     Vector3.zero,
                     (Vector3)Mouse.current.position.value - transform.position
-                    - button.localPosition,
+                    - button.localPosition + Vector3.up * 15f,
                 });
             }
         }
