@@ -4,6 +4,7 @@
     {
         GRAB_OBJECT,
         GAME_END,
-        INSPECTION
+        INSPECTION,
+        END_INSPECTION
     }
 }

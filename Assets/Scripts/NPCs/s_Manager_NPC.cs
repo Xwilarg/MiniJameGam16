@@ -56,19 +56,19 @@ public class s_Manager_NPC : MonoBehaviour
     {
         if (MinigameManager.Instance.IsInspectionOn)
         {
+            _animator.SetBool("IsWalking", false);
             return;
         }
+        _animator.SetBool("IsWalking", true);
 
         float distance = Vector3.Distance(pausePoints[currentTargetPoint].transform.position, transform.position); //We want the distance between the NPC and the targetPoint.
 
         if (minimumDistance < distance) //If the minimumDistance away (due to float precision floating) is less than the distance between the targetPoint and the manager...
         {
-            _animator.SetBool("IsWalking", true);
             Walk(); //Walk.
         }
         else //But if the distance is less than the minimum distance.
         {
-            _animator.SetBool("IsWalking", false);
             ChangeDestination();
         }
 

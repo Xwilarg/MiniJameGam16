@@ -18,7 +18,7 @@ namespace Assets.Scripts.Minigame.Impl
 
         private void ResetSpeed()
         {
-            _baseSpeed = Random.Range(255, 2000);
+            _baseSpeed = Random.Range(255, 1500);
         }
 
         private void Update()
