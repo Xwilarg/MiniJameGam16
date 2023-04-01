@@ -47,6 +47,7 @@ namespace MiniJamGame16.Minigame
                     if (_inspectionPercent < 0) _inspectionPercent = 0;
                     _inspectionText.text = $"{Translate.Instance.Tr("INSPECTIONCHANCES").ToUpperInvariant()} {_inspectionPercent}%";
                     _inspectionText.color = Color.white;
+                    IsInspectionOn = false;
                 };
             }
         }
