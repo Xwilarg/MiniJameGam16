@@ -61,7 +61,7 @@ namespace MiniJamGame16.Minigame
             _floxbutton.SetActive(!IsInspectionOn);
             if (IsInspectionOn)
             {
-                _inspectionText.text = Translate.Instance.Tr("INSPECTIONON");
+                _inspectionText.text = Translate.Instance.Tr("INSPECTIONON").ToUpperInvariant();
                 _inspectionText.color = Color.red;
             }
             IsActive = true;
