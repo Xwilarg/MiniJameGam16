@@ -1,6 +1,6 @@
-public abstract class DroneFixer : BugFixer<Drone>
+class DroneFixer : BugFixer<Drone>
 {
-    public override void FixBug(Drone data)
+    public override void Fix(Drone data)
     {
         if (data.IsGoingToCrashIntoEachOther())
             data.Dont();
