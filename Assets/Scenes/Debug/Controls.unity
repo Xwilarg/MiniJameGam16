@@ -1594,8 +1594,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22
-  m_fontSizeBase: 22
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1656,6 +1656,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c47fc4d2bc17e254dbfe5be0a5570a38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _capitalize: 1
 --- !u!1 &538802512
 GameObject:
   m_ObjectHideFlags: 0
@@ -2226,8 +2227,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22
-  m_fontSizeBase: 22
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2288,6 +2289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c47fc4d2bc17e254dbfe5be0a5570a38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _capitalize: 1
 --- !u!1 &886962325
 GameObject:
   m_ObjectHideFlags: 0
@@ -2941,7 +2943,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: '{TUTO2}'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ba0714012c8099a4f9eab0622f2957f0, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9d0864411b5fced419ab5f071a5b76c5, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2966,8 +2968,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3028,6 +3030,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c47fc4d2bc17e254dbfe5be0a5570a38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _capitalize: 0
 --- !u!1 &1299410926
 GameObject:
   m_ObjectHideFlags: 0
@@ -3513,8 +3516,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: '{TUTO1}'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ba0714012c8099a4f9eab0622f2957f0, type: 2}
-  m_sharedMaterial: {fileID: 6093365411607696308, guid: ba0714012c8099a4f9eab0622f2957f0, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9d0864411b5fced419ab5f071a5b76c5, type: 2}
+  m_sharedMaterial: {fileID: -6080267860253890902, guid: 9d0864411b5fced419ab5f071a5b76c5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3603,7 +3606,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 6093365411607696308, guid: ba0714012c8099a4f9eab0622f2957f0, type: 2}
+  - {fileID: -6080267860253890902, guid: 9d0864411b5fced419ab5f071a5b76c5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3637,6 +3640,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c47fc4d2bc17e254dbfe5be0a5570a38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _capitalize: 0
 --- !u!1 &1903018660
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,6 +7,9 @@ namespace MiniJamGame16.Translation
 {
     public class TMP_TextTranslate : MonoBehaviour
     {
+        [SerializeField]
+        private bool _capitalize;
+
         private string _original;
 
         private void Start()
@@ -30,7 +33,12 @@ namespace MiniJamGame16.Translation
             {
                 sentence = sentence.Replace(match.Value, Translate.Instance.Tr(match.Groups[1].Value));
             }
-            GetComponent<TMP_Text>().text = FixFrench(sentence).ToUpperInvariant();
+            var s = FixFrench(sentence);
+            if (_capitalize)
+            {
+                s = s.ToUpperInvariant();
+            }
+            GetComponent<TMP_Text>().text = s;
         }
     }
 }
