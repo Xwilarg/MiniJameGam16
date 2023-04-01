@@ -25,7 +25,7 @@ namespace MiniJamGame16.Minigame.Impl
 
         public override void Init()
         {
-            _pumpCount = 10;
+            _pumpCount = 5;
             _bText.text = $"{Translate.Instance.Tr("PUMP").ToUpperInvariant()}\n{_pumpCount} {Translate.Instance.Tr("LEFT").ToUpperInvariant()}";
             _cursor.ResetCursor();
         }
