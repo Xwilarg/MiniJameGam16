@@ -1,6 +1,7 @@
 using MiniJamGame16.Minigame;
 using MiniJamGame16.Player;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// This is the script for the Manager NPC. This NPC will walk back and forth, left to right, pausing as they get to each point they are meant to stop at.
@@ -23,6 +24,14 @@ public class s_Manager_NPC : MonoBehaviour
     [SerializeField]
     [Tooltip("The movement speed for the manager")]
     int walkSpeed;
+
+    [SerializeField]
+    private Image _srEye;
+
+    [SerializeField]
+    private Sprite _eyeClosed, _eyeOpened;
+
+    [SerializeField]
 
     /// <summary>
     /// Distance minimum which the manager can be from his point until his actions change
@@ -57,6 +66,8 @@ public class s_Manager_NPC : MonoBehaviour
         if (MinigameManager.Instance.IsInspectionOn)
         {
             _animator.SetBool("IsWalking", false);
+            _srEye.sprite = _eyeOpened;
+            _isLookingAtPlayer = true;
             return;
         }
         _animator.SetBool("IsWalking", true);
@@ -71,6 +82,10 @@ public class s_Manager_NPC : MonoBehaviour
         {
             ChangeDestination();
         }
+        _isLookingAtPlayer =
+            (!_sr.flipX && transform.position.x <= _pc.transform.transform.position.x) ||
+            (_sr.flipX && transform.position.x >= _pc.transform.transform.position.x);
+        _srEye.sprite = _isLookingAtPlayer ? _eyeOpened : _eyeClosed;
 
     }
 
@@ -101,9 +116,6 @@ public class s_Manager_NPC : MonoBehaviour
 
     public void UseTape()
     {
-        _isLookingAtPlayer =
-            (!_sr.flipX && transform.position.x <= _pc.transform.transform.position.x) ||
-            (_sr.flipX && transform.position.x >= _pc.transform.transform.position.x);
         if (_isLookingAtPlayer)
         {
             MinigameManager.Instance.IncreaseError();
