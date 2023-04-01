@@ -1,21 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DummyPlayer : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void ReferenceConfirmation()
     {
         Debug.Log("The DummyPlayer is currently being referenced to by the Manager.");

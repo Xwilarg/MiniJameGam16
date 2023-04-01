@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -11,8 +12,8 @@ public class s_Manager_NPC : MonoBehaviour
                                                         //This makes it so the player is punished if caught while within the NPC's Circular Raycast.
                                                         //Remember to change from DummyPlayer to Player later!
     [SerializeField] GameObject[] pausePoints; //Setup multiple points where the manager can stop
-    [SerializeField] int currentWaitTime;      //The current wait time for the manager. Serialized for convenience.
-    [SerializeField] int maxWaitTIme;          //How long the manager can stay stopped for. Serialize for convenience.
+    [SerializeField] float currentWaitTime;      //The current wait time for the manager. Serialized for convenience.
+    [SerializeField] float maxWaitTIme;          //How long the manager can stay stopped for. Serialize for convenience.
     [SerializeField] int currentTargetPoint;   //Tracking which point they are currently targetting. Serialized for convenience.
     [SerializeField] int walkSpeed;            //The movement speed for the manager.
     [SerializeField] float minimumDistance;    //Distance minimum which the manager can be from his point until his actions change.
@@ -53,9 +54,9 @@ public class s_Manager_NPC : MonoBehaviour
             Debug.Log("Ping."); //Debug message.
 
             //Branching action based on the time until it's allowed to walk again.
-            if (currentWaitTime != 0)  //If the time is not zero.
+            if (currentWaitTime > 0.0f)  //If the time is not zero.
             {
-                currentWaitTime--;  //Decrement the time by 1.
+                currentWaitTime -= Time.deltaTime;  //Decrement the time by deltaTime..
                 CastCircleCast();   //And cast the circlular Raycast.
             }
             else //But if the time is zero.
@@ -109,7 +110,7 @@ public class s_Manager_NPC : MonoBehaviour
         }
 
         //Real detection code.
-        if(hits.Length > 0) //If the player is detected, they are in view, and may now be punished if they hit the Duct Tape Button.
+        if(hits.Any<RaycastHit2D>()) //If the player is detected, they are in view, and may now be punished if they hit the Duct Tape Button.
         {
 
             if(Input.GetKeyDown(KeyCode.Space) && punishmentEnabled == true){ //Replace "Input.GetKeyDown(KeyCode.Space)" with a call to the player controller.
@@ -121,10 +122,6 @@ public class s_Manager_NPC : MonoBehaviour
             Debug.Log("Hit: " + hits[0].collider.name + "\n");  //No need to go anywhere above the first index, as all indexes will have the same information.
 
             Debug.Log("Hits size: " +hits.Length);  //Just checking if it was a per pixel thing. It's per object.
-        }
-        else //If the player is not detected, do nothing.
-        {
-
         }
         //This code block checks an index of 1 size every frame. So it will be quite accurate to detect the instant the player cheats.
         //Will now impletement a way to stop checking if the cheat until they've moved away.
