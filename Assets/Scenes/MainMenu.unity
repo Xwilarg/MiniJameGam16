@@ -2152,6 +2152,7 @@ GameObject:
   - component: {fileID: 1905008310}
   - component: {fileID: 1905008312}
   - component: {fileID: 1905008311}
+  - component: {fileID: 1905008313}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -2227,7 +2228,7 @@ MonoBehaviour:
 
 
     {ADDITIONALHELP}
-    Shayan Notash {and} Mad'
+    Shayan Notash {AND} Mad'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d3d2def1b22504542ab85f8cb96098f3, type: 2}
   m_sharedMaterial: {fileID: -5934927923429500334, guid: d3d2def1b22504542ab85f8cb96098f3, type: 2}
@@ -2304,6 +2305,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1905008309}
   m_CullTransparentMesh: 1
+--- !u!114 &1905008313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905008309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c47fc4d2bc17e254dbfe5be0a5570a38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _capitalize: 0
 --- !u!1 &2073882821
 GameObject:
   m_ObjectHideFlags: 0
