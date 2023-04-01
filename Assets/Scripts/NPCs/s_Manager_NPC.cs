@@ -1,4 +1,5 @@
 using MiniJamGame16.Minigame;
+using MiniJamGame16.Player;
 using UnityEngine;
 
 /// <summary>
@@ -31,18 +32,21 @@ public class s_Manager_NPC : MonoBehaviour
     /// <summary>
     /// For manipulating the direction of the NPC Sprite
     /// </summary>
-    SpriteRenderer thisSpriteRenderer;
+    SpriteRenderer _sr;
 
     [SerializeField]
     [Tooltip("Lets us set the size of the NPC's Raycast, which is used for detecting if NPC can catch the player cheating")]
     float circleCastRadius;
+
+    [SerializeField]
+    private PlayerController _pc;
 
     private bool _isLookingAtPlayer;
 
     void Awake()
     {
         currentTargetPoint = Random.Range(0, pausePoints.Length);     //At level load, randomize which point the manager is going to move to.
-        thisSpriteRenderer = GetComponent<SpriteRenderer>();
+        _sr = GetComponent<SpriteRenderer>();
     }
 
     void FixedUpdate()
@@ -62,16 +66,15 @@ public class s_Manager_NPC : MonoBehaviour
 
     private void Update()
     {
-
-        Collider2D hits = Physics2D.OverlapCircle(transform.position, circleCastRadius, LayerMask.GetMask("Player")); //Add player layer later.
-        _isLookingAtPlayer = hits != null;
+        // Collider2D hits = Physics2D.OverlapCircle(transform.position, circleCastRadius, LayerMask.GetMask("Player")); //Add player layer later.
+        // _isLookingAtPlayer = hits != null; // TODO: Broken
     }
 
     void Walk()
     {
         var isGoingRight = transform.position.x < pausePoints[currentTargetPoint].transform.position.x;
         transform.Translate(Time.deltaTime * walkSpeed * (isGoingRight ? Vector3.right : Vector3.left));
-        thisSpriteRenderer.flipX = !isGoingRight;
+        _sr.flipX = !isGoingRight;
     }
 
     void ChangeDestination()
@@ -88,6 +91,9 @@ public class s_Manager_NPC : MonoBehaviour
 
     public void UseTape()
     {
+        _isLookingAtPlayer =
+            (!_sr.flipX && transform.position.x <= _pc.transform.transform.position.x) ||
+            (_sr.flipX && transform.position.x >= _pc.transform.transform.position.x);
         if (_isLookingAtPlayer)
         {
             MinigameManager.Instance.IncreaseError();
