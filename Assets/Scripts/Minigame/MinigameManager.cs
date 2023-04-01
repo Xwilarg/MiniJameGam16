@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MiniJamGame16.Tutorial;
+using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -11,6 +12,9 @@ namespace MiniJamGame16.Minigame
 
         [SerializeField]
         private MinigameAssociation[] _minigames;
+
+        [SerializeField]
+        private GameObject _floxbutton;
 
         public bool IsActive { private set; get; }
 
@@ -25,6 +29,8 @@ namespace MiniJamGame16.Minigame
                 {
                     IsActive = false;
                     game.Minigame.gameObject.SetActive(false);
+                    _floxbutton.SetActive(false);
+                    TutorialManager.Instance.AdvanceTutorial(TutorialAdvancement.GAME_END);
                     _onDone();
                 };
             }
@@ -37,7 +43,20 @@ namespace MiniJamGame16.Minigame
             Assert.IsNotNull(target);
             target.Minigame.gameObject.SetActive(true);
             target.Minigame.Init();
+            _floxbutton.SetActive(true);
             IsActive = true;
+        }
+
+        public void UseFlox()
+        {
+            _floxbutton.SetActive(false);
+            IsActive = false;
+            foreach (var game in _minigames)
+            {
+                game.Minigame.gameObject.SetActive(false);
+            }
+            TutorialManager.Instance.AdvanceTutorial(TutorialAdvancement.GAME_END);
+            _onDone();
         }
     }
 }
