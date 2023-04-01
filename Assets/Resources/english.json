@@ -14,5 +14,14 @@
     "INSPECTIONON": "Inspection Ongoing",
 
     "PUMP": "Pump",
-    "LEFT": "left"
+    "LEFT": "left",
+
+    "TECHARTIST": "Tech-artist",
+    "AUDIO": "Audio",
+    "PROGRAMMING": "Programming",
+    "NARRATION": "Narration",
+    "ARTIST": "Artist",
+    "SPELLCHECK": "Spellcheck",
+    "ADDITIONALHELP": "With the additional help of ",
+    "AND": "and"
 }

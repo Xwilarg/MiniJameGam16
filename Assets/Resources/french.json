@@ -14,5 +14,14 @@
     "INSPECTIONON": "Inspection en cours",
     
     "PUMP": "Pomper",
-    "LEFT": "restant"
+    "LEFT": "restant",
+
+    "TECHARTIST": "Artiste technique",
+    "AUDIO": "Audio",
+    "PROGRAMMING": "Programmation",
+    "NARRATION": "Narration",
+    "ARTIST": "Artiste",
+    "SPELLCHECK": "Vérification orthographique",
+    "ADDITIONALHELP": "Avec l'aide additionel de ",
+    "AND": "et"
 }
