@@ -1,11 +1,5 @@
 using MiniJamGame16.Minigame;
-using MiniJamGame16.Player;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class s_Manager_NPC : MonoBehaviour
 {
@@ -48,21 +42,8 @@ public class s_Manager_NPC : MonoBehaviour
         }
         else //But if the distance is less than the minimum distance.
         {
-            //Branching action based on the time until it's allowed to walk again.
-            if (currentWaitTime > 0.0f)
-            {
-                currentWaitTime -= Time.deltaTime;
-            }
-            else //But if the time is zero.
-            {
-                currentWaitTime = maxWaitTIme; //reset the timer that it must wait.
-                ChangeDestination();    //Set a new destination. This could end up being the same point that it is on, which case it will re-roll on the next frame.
-
-            }
-
+            ChangeDestination();
         }
-
-        CastCircleCast(); //Should always be casting, not just while it's waiting.
 
     }
 
@@ -93,28 +74,25 @@ public class s_Manager_NPC : MonoBehaviour
         }
     }
 
-    void CastCircleCast()
-    {
-        Collider2D hits = Physics2D.OverlapCircle(transform2D, circleCastRadius, LayerMask.GetMask("Player")); //Add player layer later.
-
-        if (hits != null && Input.GetKeyDown(KeyCode.Space) && punishmentEnabled == true){ //Replaced with old input for testing.
-            punishmentEnabled = false;
-            PunishmentEvent(); //Trigger punishement.
-        }
-        
-    }
-
     private void OnDrawGizmos() //This is just visualizing our CircleCast. No other way to do it. Can be removed from execution later.
     {
         Gizmos.color = Color.yellow;    //Make the gizmo Yellow.
         Gizmos.DrawWireSphere(transform.position, circleCastRadius); //Draws the Gizmo (easiest way to display a sphere raycast).
     }
 
-    void PunishmentEvent() //Do whatever the manager does to punish the player for getting caught cheating here.
+    public void UseTape()
     {
-        Debug.Log("Punished!\n"); //Just outputting that the player has been punished for now for testing. Works correctly.
+        Collider2D hits = Physics2D.OverlapCircle(transform2D, circleCastRadius, LayerMask.GetMask("Player")); //Add player layer later.
 
-        MinigameManager.Instance.UseFlox();
+        if (hits != null && punishmentEnabled)
+        {
+            punishmentEnabled = false;
+            MinigameManager.Instance.IncreaseError();
+        }
+        else
+        {
+            MinigameManager.Instance.UseFlox();
+        }
     }
 
 }
