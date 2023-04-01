@@ -2204,31 +2204,32 @@ MonoBehaviour:
 
     {TECHARTIST}
 
-    {AUDIO}
 
-
-    Thomas Farrell
+    Christian Chaux
 
     {PROGRAMMING}
 
 
-    Christian
-    Chaux
-
-    {PROGRAMMING}
-
-    {NARRATION}
-
-
-    Jacob Richer (Verdant_Jack)
+    Jacob
+    Richer (Verdant_Jack)
 
     {ARTIST}
 
     {SPELLCHECK}
 
 
-    {ADDITIONALHELP}
-    Shayan Notash {AND} Mad'
+    Shayan Notash
+
+    {AUDIO}
+
+
+    Thomas
+    Farrell
+
+    {PROGRAMMING}
+
+
+    {ADDITIONALHELP} Mad'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d3d2def1b22504542ab85f8cb96098f3, type: 2}
   m_sharedMaterial: {fileID: -5934927923429500334, guid: d3d2def1b22504542ab85f8cb96098f3, type: 2}
