@@ -67,6 +67,13 @@ namespace MiniJamGame16.Minigame
             IsActive = true;
         }
 
+        public void IncreaseError()
+        {
+            _inspectionPercent += 20;
+            if (_inspectionPercent > 100) _inspectionPercent = 100;
+            _inspectionText.text = $"{Translate.Instance.Tr("INSPECTIONCHANCES").ToUpperInvariant()} {_inspectionPercent}%";
+        }
+
         public void UseFlox()
         {
             _floxbutton.SetActive(false);

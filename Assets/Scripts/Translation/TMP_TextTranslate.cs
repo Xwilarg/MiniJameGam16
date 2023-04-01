@@ -21,6 +21,7 @@ namespace MiniJamGame16.Translation
         private string FixFrench(string str)
         {
             return str
+                .Replace('ç', 'c')
                 .Replace('à', 'a')
                 .Replace('è', 'e')
                 .Replace('é', 'e');

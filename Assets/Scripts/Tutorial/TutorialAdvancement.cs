@@ -3,6 +3,7 @@
     public enum TutorialAdvancement
     {
         GRAB_OBJECT,
-        GAME_END
+        GAME_END,
+        INSPECTION
     }
 }
