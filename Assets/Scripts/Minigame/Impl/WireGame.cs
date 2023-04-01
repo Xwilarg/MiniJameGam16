@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace MiniJamGame16.Minigame.Impl
@@ -7,6 +8,9 @@ namespace MiniJamGame16.Minigame.Impl
     {
         private CustomLineRenderer _target;
 
+        [SerializeField]
+        private Wire[] _wires;
+
         public override void Init()
         {
             if (_target != null)
@@ -14,6 +18,16 @@ namespace MiniJamGame16.Minigame.Impl
                 _target.enabled = false;
             }
             _target = null;
+
+            _wires.OrderBy(_ => Random.value);
+            for (int i = 0; i < _wires.Length; i++)
+            {
+                var target = i + 1;
+                var a = Random.Range(3, 20);
+                var b = Random.Range(3, 20);
+                var c = (a * b) - target;
+                _wires[i].SetMath($"{a} * {b} - {c}", target);
+            }
         }
 
         public void SetLR(CustomLineRenderer lr)

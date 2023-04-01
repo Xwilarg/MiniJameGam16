@@ -2,6 +2,7 @@
 {
     public enum MinigameType
     {
-        IT
+        IT,
+        WIRES
     }
 }
