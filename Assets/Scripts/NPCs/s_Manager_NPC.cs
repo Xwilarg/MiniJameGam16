@@ -9,6 +9,8 @@ using UnityEngine.InputSystem;
 
 public class s_Manager_NPC : MonoBehaviour
 {
+    //V2
+
     //This is the script for the Manager NPC. This NPC will walk back and forth, left to right, pausing as they get to each point they are meant to stop at.
 
     [SerializeField] PlayerController playerController;  //Setup the ability to detect if the player has hit the Duck Tape (Cheat) key/event.

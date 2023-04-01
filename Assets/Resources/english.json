@@ -1,7 +1,14 @@
 {
-    "TUTO1": "You're not payed to watch your phone!\nGrab an object with E and repair it before it fall in the burner!",
+    "PLAY": "Play",
+    "CREDITS": "Credits",
+
+    "TUTO1": "You're not paid to watch your phone!\nGrab an object with E and repair it before it fall in the burner!",
     "TUTO2": "This sure sounds tedious uh?\nWell sucks to be you cause it's your job!\nAnd don't think to use that flox tape button while I'm watching!\nPain and sweat is part of our moto",
 
     "ITEXPLANATIONS": "Copy the code to fix the bugs!",
-    "WIRESEXPLANATIONS": "Link the wires to fix the electrical defaults"
+    "WIRESEXPLANATIONS": "Link the wires to fix the electrical defaults!",
+    "RELEXPLANATIONS": "Fix this broken relationship!",
+
+    "PUMP": "Pump",
+    "LEFT": "left"
 }

@@ -3,6 +3,7 @@
     public enum MinigameType
     {
         IT,
-        WIRES
+        WIRES,
+        RELATIONSHIP
     }
 }

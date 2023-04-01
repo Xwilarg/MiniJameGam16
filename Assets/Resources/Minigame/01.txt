@@ -1,12 +1,8 @@
-class CheeseFondue : AAmazing
+class DroneFixer : BugFixer<Drone>
 {
-    public override void Use()
+    public override void Fix(Drone data)
     {
-        base.Use();
-        IsCheeseMelted = true;
+        if (data.IsGoingToCrashIntoEachOther())
+            data.Dont();
     }
-
-    public override bool IsAmazing => true;
-
-    public bool IsCheeseMelted { private set; get; }
 }

@@ -1,0 +1,7 @@
+class FranceFixer : BugFixer<France>
+{
+    public override void Fix(France data)
+    {
+        data.Revolution(useGuillotine: data.Regime == Governement.MONARCHY);
+    }
+}
