@@ -232,8 +232,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fireMat: {fileID: 2100000, guid: 89496aba64cae934ba59937188364496, type: 2}
-  _fireMatBurningEffectColor: {r: 124623.586, g: 25784.475, b: 9134.708, a: 1}
   _smokeVFX: {fileID: 6510962474083096137}
+  _fireMatColor: {r: 559.1988, g: 115.69758, b: 40.98837, a: 1}
+  _fireMatBurstColor: {r: 6780.6885, g: 1402.9166, b: 497.0136, a: 1}
 --- !u!1 &8584236314798876471
 GameObject:
   m_ObjectHideFlags: 0

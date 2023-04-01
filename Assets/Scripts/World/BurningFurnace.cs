@@ -1,6 +1,4 @@
-﻿using MiniJamGame16.Item;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 namespace MiniJamGame16.World
@@ -11,28 +9,47 @@ namespace MiniJamGame16.World
         private Material _fireMat;
 
         [SerializeField]
-        [ColorUsage(true, true)]
-        private Color _fireMatBurstColor;
-        [SerializeField]
-        [ColorUsage(true, true)]
-        private Color _fireMatColor;
-       
-        [SerializeField]
         private ParticleSystem _smokeVFX;
 
-        public void TriggerBurningVFX()
+        [SerializeField]
+        [ColorUsage(true, true)]
+        private Color _fireMatColor, _fireMatBurstColor;
+
+        [SerializeField]
+        private float _burstDuration = 0.4f;
+
+        private void Awake()
         {
-            // TODO:
-            // StartCoroutine(GlowFireColor());
+            _fireMat.SetColor("_GlowColor", _fireMatColor);
+        }
+
+        public void TriggerBurningVFX()
+    
+        {
+            StartCoroutine(GlowColorBurst());
             _smokeVFX.Play();
         }
 
-        // private IEnumerator GlowFireColor()
-        // {
-            // Color originalColor = _fireMat.GetColor("_GlowColor");
+        private IEnumerator GlowColorBurst()
+        {
+            float step = _burstDuration / 10;
+
+            for (float t = 0f; t <= _burstDuration/2; t += step)
+            {
+                _fireMat.SetColor("_GlowColor", Color.Lerp(_fireMatColor, _fireMatBurstColor, t));
+                yield return new WaitForSeconds(step);
+            }
+            yield return new WaitForSeconds(_burstDuration/2);
             
-            // _fireMat.SetColor("_GlowColor", _fireMatBurstColor);
-            // yield return new WaitForSeconds();
-        // }
+            for (float t = _burstDuration/2; t >= 0; t -= step)
+            {
+                _fireMat.SetColor("_GlowColor", Color.Lerp(_fireMatColor, _fireMatBurstColor, t));
+                yield return new WaitForSeconds(step);
+            }
+            yield return new WaitForSeconds(_burstDuration/2);
+
+            _fireMat.SetColor("_GlowColor", _fireMatColor);
+            yield return null;
+        }
     }
 }
