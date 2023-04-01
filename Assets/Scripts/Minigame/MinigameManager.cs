@@ -12,6 +12,9 @@ namespace MiniJamGame16.Minigame
         [SerializeField]
         private MinigameAssociation[] _minigames;
 
+        [SerializeField]
+        private GameObject _floxbutton;
+
         public bool IsActive { private set; get; }
 
         public Action _onDone;
@@ -25,6 +28,7 @@ namespace MiniJamGame16.Minigame
                 {
                     IsActive = false;
                     game.Minigame.gameObject.SetActive(false);
+                    _floxbutton.SetActive(false);
                     _onDone();
                 };
             }
@@ -37,7 +41,19 @@ namespace MiniJamGame16.Minigame
             Assert.IsNotNull(target);
             target.Minigame.gameObject.SetActive(true);
             target.Minigame.Init();
+            _floxbutton.SetActive(true);
             IsActive = true;
+        }
+
+        public void UseFlox()
+        {
+            _floxbutton.SetActive(false);
+            IsActive = false;
+            foreach (var game in _minigames)
+            {
+                game.Minigame.gameObject.SetActive(false);
+            }
+            _onDone();
         }
     }
 }
