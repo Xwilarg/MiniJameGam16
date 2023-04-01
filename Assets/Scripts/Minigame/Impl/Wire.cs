@@ -38,7 +38,7 @@ namespace MiniJamGame16.Minigame.Impl
 
         public void Enable()
         {
-            _manager.SetLR(_lr);
+            _manager.SetLR(this, _lr);
         }
     }
 }

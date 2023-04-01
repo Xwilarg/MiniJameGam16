@@ -30,8 +30,9 @@ namespace MiniJamGame16.Minigame.Impl
             }
         }
 
-        public void SetLR(CustomLineRenderer lr)
+        public void SetLR(Wire w, CustomLineRenderer lr)
         {
+            w.SetDest(-1);
             if (_target != null)
             {
                 _target.enabled = false;
@@ -40,18 +41,27 @@ namespace MiniJamGame16.Minigame.Impl
             _target.enabled = true;
         }
 
-        public void EndLR(Transform t)
+        public void EndLR(WireOut w)
         {
-            var button = (RectTransform)_target.transform.parent.transform;
             if (_target != null)
             {
+                _target.transform.parent.GetComponent<Wire>().SetDest(w.ID); // TODO: Clean
+                var button = (RectTransform)_target.transform.parent.transform;
                 _target.SetPositions(new[]
                 {
                     Vector3.zero,
-                    t.position - transform.position
+                    w.transform.position - transform.position
                     - button.localPosition,
                 });
                 _target = null;
+                foreach (var wire in _wires)
+                {
+                    if (!wire.IsValid)
+                    {
+                        return;
+                    }
+                }
+                Complete();
             }
         }
 
