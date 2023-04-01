@@ -9,6 +9,9 @@
     "WIRESEXPLANATIONS": "Relies les fils pour corriger les défaults électriques !",
     "RELEXPLANATIONS": "Repare cette relation brisée !",
     
+    "INSPECTIONCHANCES": "Chances d'inspection :",
+    "INSPECTIONON": "Inspection en cours",
+    
     "PUMP": "Pomper",
     "LEFT": "restant"
 }

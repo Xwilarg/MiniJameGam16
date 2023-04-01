@@ -2953,6 +2953,7 @@ MonoBehaviour:
   - Type: 1
     Minigame: {fileID: 2117845631}
   _floxbutton: {fileID: 1048032890}
+  _inspectionText: {fileID: 0}
 --- !u!114 &1126285141
 MonoBehaviour:
   m_ObjectHideFlags: 0

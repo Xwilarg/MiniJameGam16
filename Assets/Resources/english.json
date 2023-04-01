@@ -9,6 +9,9 @@
     "WIRESEXPLANATIONS": "Link the wires to fix the electrical defaults!",
     "RELEXPLANATIONS": "Fix this broken relationship!",
 
+    "INSPECTIONCHANCES": "Inspection Chances:",
+    "INSPECTIONON": "Inspection Ongoing",
+
     "PUMP": "Pump",
     "LEFT": "left"
 }
