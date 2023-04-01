@@ -210,10 +210,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Burner
       objectReference: {fileID: 0}
-    - target: {fileID: 4073812926287114093, guid: 99a4b059cfe5170458ec8f012264af7c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -996,8 +992,8 @@ Camera:
   m_GameObject: {fileID: 391604785}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.7264151, g: 0.685879, b: 0.59894973, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1702,8 +1698,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 391604788}
-  - {fileID: 1347158485}
   - {fileID: 241009323}
+  - {fileID: 1347158485}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

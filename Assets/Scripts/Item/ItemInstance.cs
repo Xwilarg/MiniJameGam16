@@ -1,4 +1,5 @@
 ﻿using MiniJamGame16.SO;
+using MiniJamGame16.World;
 using UnityEngine;
 
 namespace MiniJamGame16.Item
@@ -36,6 +37,7 @@ namespace MiniJamGame16.Item
         {
             if (collision.collider.CompareTag("Burner"))
             {
+                collision.collider.GetComponent<BurningFurnace>().TriggerBurningVFX();
                 Destroy(gameObject);
             }
         }
