@@ -6445,6 +6445,10 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 59203bc48f830b344857e201e0dbe6f5, type: 3}
   - {fileID: 4900000, guid: 5432832fbde099c4abde06968d244b4a, type: 3}
   - {fileID: 4900000, guid: 07ac5e0c114ccac44b98824e4271e453, type: 3}
+  _textAssetHard:
+  - {fileID: 4900000, guid: e32a3296c749cab41bf016f27725af68, type: 3}
+  - {fileID: 4900000, guid: 5e80b73e9df462b4eab1e48d8824c953, type: 3}
+  - {fileID: 4900000, guid: 843a476f0fb7b474da66b278c817a12f, type: 3}
 --- !u!1001 &103213341220542776
 PrefabInstance:
   m_ObjectHideFlags: 0

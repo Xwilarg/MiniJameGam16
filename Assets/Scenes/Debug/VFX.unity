@@ -3370,6 +3370,7 @@ MonoBehaviour:
   _input: {fileID: 123852935}
   _textAsset:
   - {fileID: 0}
+  _textAssetHard: []
 --- !u!1001 &103213341220542776
 PrefabInstance:
   m_ObjectHideFlags: 0
