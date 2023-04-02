@@ -162,6 +162,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1452328220}
     m_Modifications:
+    - target: {fileID: 2150142845840799540, guid: 99a4b059cfe5170458ec8f012264af7c, type: 3}
+      propertyPath: _text
+      value: 
+      objectReference: {fileID: 2080918062}
     - target: {fileID: 3078410658391865657, guid: 99a4b059cfe5170458ec8f012264af7c, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -7634,7 +7638,7 @@ GameObject:
   - component: {fileID: 2080918063}
   - component: {fileID: 2080918062}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: Counter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
