@@ -19,7 +19,7 @@ namespace MiniJamGame16.Minigame.Impl
             }
             _target = null;
 
-            _wires.OrderBy(_ => Random.value);
+            _wires = _wires.OrderBy(_ => Random.value).ToArray();
             for (int i = 0; i < _wires.Length; i++)
             {
                 var target = i + 1;
