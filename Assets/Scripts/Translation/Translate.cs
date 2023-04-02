@@ -18,6 +18,7 @@ namespace MiniJamGame16.Translation
             return str
                 .Replace('ç', 'c')
                 .Replace('à', 'a')
+                .Replace('ê', 'e')
                 .Replace('è', 'e')
                 .Replace('é', 'e');
         }
