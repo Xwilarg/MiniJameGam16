@@ -1,7 +1,5 @@
-﻿using Assets.Scripts.Minigame.Impl;
-using MiniJamGame16.Translation;
-using System.Collections;
-using System.Diagnostics.SymbolStore;
+﻿using JetBrains.Annotations;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,6 +23,11 @@ namespace MiniJamGame16.Minigame.Impl
 
         private int _size = 10;
 
+        private void Awake()
+        {
+            Init();
+        }
+
         public override void Init()
         {
             for (int i = 0; i < _parent.childCount; i++) Destroy(_parent.GetChild(i).gameObject);
@@ -34,15 +37,75 @@ namespace MiniJamGame16.Minigame.Impl
                 var go = Instantiate(_container, _parent);
                 for (int x = 0; x < _size; x++)
                 {
+                    var vy = y;
+                    var vx = x;
                     var tile = Instantiate(_tile, go.transform);
                     _data[y, x] = new() { Text = tile.GetComponentInChildren<TMP_Text>(), Button = tile.GetComponent<Button>() };
                     _data[y, x].Button.onClick.AddListener(new(() =>
                     {
-                        Click(y, x);
+                        Click(vy, vx);
                     }));
                 }
             }
             _isInit = false;
+        }
+
+        private Color[] _colors = new[] {
+          new Color(0, 1f / 255f, 253f / 255f), // 1
+          new Color(1f / 255f, 126f / 255f, 0), // 2
+          new Color(254f / 255f, 0, 0), // 3
+          new Color(1f / 255f, 0, 130f / 255f), // 4
+          new Color(131f / 255f, 0, 3f / 255f), // 5
+          new Color(0, 128f / 255f, 128f / 255f), // 6
+          Color.black, // 7
+          new Color(128, 128, 128) // 8
+        };
+
+        private bool IsInBounds(int x, int y)
+        {
+            return x >= 0 && y >= 0 && x < _size && y < _size;
+        }
+
+        private int GetMines(int x, int y)
+        {
+            var adjMines = 0;
+            for (int dy = -1; dy < 2; dy++)
+            {
+                for (int dx = -1; dx < 2; dx++)
+                {
+                    if (IsInBounds(x + dx, y + dy) && _data[y + dy, x + dx].IsMine)
+                    {
+                        adjMines++;
+                    }
+                }
+            }
+            return adjMines;
+        }
+
+        private void CleanTile(int x, int y)
+        {
+            var dir = new[]
+            {
+                Vector2Int.up, Vector2Int.down,
+                Vector2Int.left, Vector2Int.right
+            };
+            foreach (var d in dir)
+            {
+                if (IsInBounds(x + d.x, y + d.y) && _data[y + d.y, x + d.x].Button.interactable)
+                {
+                    _data[y + d.y, x + d.x].Button.interactable = false;
+                    var count = GetMines(x + d.x, y + d.y);
+                    if (count == 0)
+                    {
+                        CleanTile(x + d.x, y + d.y);
+                    }
+                    else
+                    {
+                        _data[y + d.y, x + d.x].Text.text = $"{count}";
+                        _data[y + d.y, x + d.x].Text.color = _colors[count - 1];
+                    }
+                }
+            }
         }
 
         public void Click(int y, int x)
@@ -64,23 +127,23 @@ namespace MiniJamGame16.Minigame.Impl
                     if (_data[randY, randX].Button.interactable && !_data[randY, randX].IsMine)
                     {
                         _data[randY, randX].IsMine = true;
+                        mineCount--;
                     }
                 }
             }
-            var adjMines = 0;
-            for (int dy = -1; dy < 2; dy++)
-            {
-                for (int dx = -1; dx < 2; dx++)
-                {
-                    if (_data[y + dy, x + dx].IsMine)
-                    {
-                        adjMines++;
-                    }
-                }
-            }
+            var adjMines = GetMines(x, y);
             if (adjMines > 0)
             {
+                _data[y, x].Text.text = $"{adjMines}";
+                _data[y, x].Text.color = _colors[adjMines - 1];
+            }
+            else
+            {
 
+            }
+            if (_data.Cast<MineData>().All(x => x.IsMine || !x.Button.interactable))
+            {
+                Complete();
             }
         }
     }

@@ -2907,7 +2907,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &666547216
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4140,6 +4140,8 @@ MonoBehaviour:
     Minigame: {fileID: 2117845631}
   - Type: 2
     Minigame: {fileID: 612136617}
+  - Type: 3
+    Minigame: {fileID: 666547219}
   _floxbutton: {fileID: 1048032890}
   _inspectionText: {fileID: 796294466}
 --- !u!114 &1126285141
