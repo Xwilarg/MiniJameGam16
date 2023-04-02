@@ -24,7 +24,7 @@ namespace MiniJamGame16.Minigame.Impl
 
         private MineData[,] _data;
 
-        public bool _isInit;
+        private bool _isInit;
 
         private int _size;
         private int _baseNbOfMines;
