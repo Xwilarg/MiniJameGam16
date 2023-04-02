@@ -1,4 +1,5 @@
 ﻿using MiniJamGame16.Menu;
+using MiniJamGame16.Systems;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -18,6 +19,9 @@ namespace MiniJamGame16.Minigame.Impl
         [SerializeField]
         private TextAsset[] _textAssetHard;
         private string _text;
+
+        [SerializeField]
+        private AudioClip _bip;
 
         public override void Init()
         {
@@ -41,6 +45,7 @@ namespace MiniJamGame16.Minigame.Impl
             }
             else
             {
+                if (length < _text.Length && _text[length] != '\n' && _text[length] != ' ' && _text[length] != '\t') AudioSystem.Instance.PlaySound(_bip);
                 while (length < _text.Length && _text[length] == '\n')
                 {
                     length++;
