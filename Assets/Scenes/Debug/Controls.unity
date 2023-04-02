@@ -4245,6 +4245,7 @@ MonoBehaviour:
   - {fileID: 1654062092}
   - {fileID: 1383482113}
   - {fileID: 1519904392}
+  _wireSFX: {fileID: 0}
 --- !u!1 &2134573229
 GameObject:
   m_ObjectHideFlags: 0

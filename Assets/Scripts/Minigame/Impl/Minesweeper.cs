@@ -1,4 +1,5 @@
 ﻿using MiniJamGame16.Menu;
+using MiniJamGame16.Systems;
 using System.Collections;
 using System.Linq;
 using TMPro;
@@ -18,9 +19,12 @@ namespace MiniJamGame16.Minigame.Impl
         [SerializeField]
         private GameObject _tile;
 
+        [SerializeField]
+        private AudioClip _clipSFX, _bombSFX;
+
         private MineData[,] _data;
 
-        public bool _isInit;
+        private bool _isInit;
 
         private int _size;
         private int _baseNbOfMines;
@@ -137,9 +141,11 @@ namespace MiniJamGame16.Minigame.Impl
             if (_data[y, x].IsMine)
             {
                 ShowAllMines();
+                AudioSystem.Instance.PlaySound(_bombSFX);
                 StartCoroutine(WaitAndReset());
                 return;
             }
+            AudioSystem.Instance.PlaySound(_clipSFX);
             if (!_isInit)
             {
                 var mineCount = _baseNbOfMines;

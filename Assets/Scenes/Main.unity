@@ -688,6 +688,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 123852933}
   m_CullTransparentMesh: 1
+--- !u!1 &132457271
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 132457272}
+  - component: {fileID: 132457274}
+  - component: {fileID: 132457273}
+  m_Layer: 5
+  m_Name: Heart
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &132457272
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 132457271}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 612136613}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 96.5}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &132457273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 132457271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -1987647036092727572, guid: d0ab66c72ba12a54c8a0a7466d1326de, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &132457274
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 132457271}
+  m_CullTransparentMesh: 1
 --- !u!1 &134897431
 GameObject:
   m_ObjectHideFlags: 0
@@ -3225,6 +3301,7 @@ RectTransform:
   - {fileID: 1868970344}
   - {fileID: 1982297852}
   - {fileID: 143631167}
+  - {fileID: 132457272}
   m_Father: {fileID: 907593865}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3285,6 +3362,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cursor: {fileID: 2088484937}
   _button: {fileID: 1982297853}
+  _heartbeatSFX: {fileID: 8300000, guid: 146d5c55623602e478f7c4572d807e5a, type: 3}
+  _heart: {fileID: 132457273}
 --- !u!1 &622256025
 GameObject:
   m_ObjectHideFlags: 0
@@ -3664,7 +3743,8 @@ MonoBehaviour:
   _parent: {fileID: 1582107918}
   _container: {fileID: 965529179556843989, guid: 05ce22f7601bac84abbf4468ee0ef6ba, type: 3}
   _tile: {fileID: 978295252178753434, guid: 5cccdb371b79f1945847fe5f05e504e1, type: 3}
-  _isInit: 0
+  _clipSFX: {fileID: 8300000, guid: 2a5a1bb230652f24988a75b41d4dcfb7, type: 3}
+  _bombSFX: {fileID: 8300000, guid: 1bdd619180e872a45a1ffd1cbad2d814, type: 3}
 --- !u!1 &672153910
 GameObject:
   m_ObjectHideFlags: 0
@@ -7166,7 +7246,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 33.75}
+  m_AnchoredPosition: {x: 0, y: -18.25}
   m_SizeDelta: {x: -40, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1868970345
@@ -7518,7 +7598,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -110}
+  m_AnchoredPosition: {x: 0, y: -153.5}
   m_SizeDelta: {x: 160, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1982297853
@@ -8105,6 +8185,7 @@ MonoBehaviour:
   - {fileID: 1654062092}
   - {fileID: 1383482113}
   - {fileID: 1519904392}
+  _wireSFX: {fileID: 8300000, guid: 92397fe95e3026e44904b91068250ed5, type: 3}
 --- !u!1001 &2124354440
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8251,6 +8332,7 @@ MonoBehaviour:
   - {fileID: 4900000, guid: e32a3296c749cab41bf016f27725af68, type: 3}
   - {fileID: 4900000, guid: 5e80b73e9df462b4eab1e48d8824c953, type: 3}
   - {fileID: 4900000, guid: 843a476f0fb7b474da66b278c817a12f, type: 3}
+  _bip: {fileID: 8300000, guid: 2a5a1bb230652f24988a75b41d4dcfb7, type: 3}
 --- !u!1001 &103213341220542776
 PrefabInstance:
   m_ObjectHideFlags: 0
