@@ -13,10 +13,10 @@
     "RELEXPLANATIONS": "Fix this broken relationship!",
     "MINEEXPLANATIONS": "Identify the viruses and fix this pet!",
 
-    "ITDETAILS": "",
-    "WIRESDETAILS": "",
-    "RELDETAILS": "",
-    "MINEDETAILS": "",
+    "ITDETAILS": "Click on the text to get the focus and write down the text you see!",
+    "WIRESDETAILS": "Click on a 'IN' to get the wire and solve the equation to link it to the right output!",
+    "RELDETAILS": "Press the 'Pump' button when the cursor in inside the green bar!",
+    "MINEDETAILS": "This is played like a minesweeper! The number displayed is the number of virus next to it, don't click on a virus!",
 
     "INSPECTIONCHANCES": "Inspection Chances:",
     "INSPECTIONON": "Inspection Ongoing",
