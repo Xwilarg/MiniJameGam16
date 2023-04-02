@@ -20,6 +20,9 @@ namespace MiniJamGame16.Minigame.Impl
         [SerializeField]
         private AudioClip _heartbeatSFX;
 
+        [SerializeField]
+        private Image _heart;
+
         private int _pumpCount;
 
         private void Awake()
