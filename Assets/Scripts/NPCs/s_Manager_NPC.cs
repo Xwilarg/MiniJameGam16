@@ -2,7 +2,6 @@ using MiniJamGame16.Minigame;
 using MiniJamGame16.Player;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
@@ -121,7 +120,7 @@ public class s_Manager_NPC : MonoBehaviour
             spottedColorIntensity -= Time.deltaTime * 2f;
         }
         _colorAdjustments.colorFilter.Interp(_sceneColor, _sceneSpottedColor, spottedColorIntensity);
-        _chromaticAberration.intensity = Mathf.Lerp(0f, 0.6f, spottedColorIntensity);
+        _chromaticAberration.intensity.value = Mathf.Lerp(0f, 0.6f, spottedColorIntensity);
         
         // Collider2D hits = Physics2D.OverlapCircle(transform.position, circleCastRadius, LayerMask.GetMask("Player")); //Add player layer later.
         // _isLookingAtPlayer = hits != null; // TODO: Broken
