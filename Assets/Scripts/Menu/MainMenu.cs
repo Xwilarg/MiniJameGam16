@@ -14,6 +14,8 @@ namespace MiniJamGame16.Menu
         private void Start()
         {
             AudioSystem.Instance.PlayMusic(_menuAudio);
+            _slider.value = GlobalOptions.Instance.Volume;
+            _difficulty.text = $"{Translate.Instance.Tr("HARDMODE")} {Translate.Instance.Tr(GlobalOptions.Instance.DifficultyHard ? "ON" : "OFF")}";
         }
 
         public void Play()
@@ -42,12 +44,6 @@ namespace MiniJamGame16.Menu
         [SerializeField]
         private TMP_Text _difficulty;
 
-        private void Awake()
-        {
-            _slider.value = GlobalOptions.Instance.Volume;
-            _difficulty.text = $"{Translate.Instance.Tr("HARDMODE")} {Translate.Instance.Tr(GlobalOptions.Instance.DifficultyHard ? "ON" : "OFF")}";
-        }
-
         public void OnVolumeChange(float value)
         {
             GlobalOptions.Instance.Volume = value;
@@ -57,6 +53,7 @@ namespace MiniJamGame16.Menu
         public void ToggleDifficulty()
         {
             GlobalOptions.Instance.DifficultyHard = !GlobalOptions.Instance.DifficultyHard;
+            _difficulty.text = $"{Translate.Instance.Tr("HARDMODE")} {Translate.Instance.Tr(GlobalOptions.Instance.DifficultyHard ? "ON" : "OFF")}";
         }
     }
 }
