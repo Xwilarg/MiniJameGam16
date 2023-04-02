@@ -41,5 +41,12 @@
 
     "RULES": "Règles",
 
-    "SCORE": "Score:"
+    "SCORE": "Score:",
+
+    "HELP1": "Bienvenue à ton travail !",
+    "HELP2": "Ton job et de réparer tout ce que tu peux, appuie sur 'E' pour prend une caisse et faire la tâche associée",
+    "HELP3": "Tu peux aussi utiliser le boutton <color=red>FLOX TAPE</color> pour directement réussir la tâche, mais ne le fais pas quand ton manager te regarde !",
+    "HELP4": "Le plus tu utilises ce bouton ou le plus ton manager te vois l'utiliser, le plus tu as des chances d'avoir une inspection !",
+    "HELP5": "Quand c'est le cas, tu devras faire ta tâche de manière classique",
+    "HELP6": "Bonne chance !"
 }

@@ -2907,7 +2907,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '{RULES }'
+  m_text: '{RULES}'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ba0714012c8099a4f9eab0622f2957f0, type: 2}
   m_sharedMaterial: {fileID: 6093365411607696308, guid: ba0714012c8099a4f9eab0622f2957f0, type: 2}

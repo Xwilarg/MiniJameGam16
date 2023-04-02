@@ -46,7 +46,7 @@
     "HELP1": "Welcome to your new job!",
     "HELP2": "Your goal is to fix everything you can, press 'E' to take a crate and complete the associated task",
     "HELP3": "You can also use the <color=red>FLOX TAPE</color> button to directly complete a task, but don't do that when your manager is looking at you!",
-    "HELP4": "The more you use this button or the more your manager see you, the more your inspection chance increases!",
+    "HELP4": "The more you use this button or the more your manager see you using it, the more your inspection chance increases!",
     "HELP5": "When that happen, you'll have to complete your task the normal way",
     "HELP6": "Good luck!"
 }
