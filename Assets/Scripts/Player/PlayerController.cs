@@ -82,11 +82,6 @@ namespace MiniJamGame16.Player
             //Debug.Log("Player score is: " + score); //Passing through scoreToAdd results in a 0. Step back a method for a description of the issue.
         }
 
-        public void DecreasePlayerScore(int scoreToTake)
-        {
-            score -= scoreToTake;
-        }
-
         public int GetPlayerScore()
         {
             return score;

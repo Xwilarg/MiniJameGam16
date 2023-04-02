@@ -12,7 +12,7 @@ namespace MiniJamGame16.Minigame.Impl
         [SerializeField]
         private Wire[] _wires;
 
-        public int gameScoreValue = 500;
+        private int gameScoreValue = 500;
 
         public override void Init()
         {

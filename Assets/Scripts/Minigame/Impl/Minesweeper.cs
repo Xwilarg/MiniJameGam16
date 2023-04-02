@@ -25,6 +25,8 @@ namespace MiniJamGame16.Minigame.Impl
         private int _size;
         private int _baseNbOfMines;
 
+        private int gameScoreValue = 250;
+
         private void Awake()
         {
             _size = GlobalOptions.Instance.MineweeperSize;
@@ -167,7 +169,7 @@ namespace MiniJamGame16.Minigame.Impl
             }
             if (_data.Cast<MineData>().All(x => x.IsMine || !x.Button.interactable))
             {
-                Complete();
+                Complete(gameScoreValue);
             }
         }
     }

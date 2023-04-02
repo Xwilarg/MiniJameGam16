@@ -19,7 +19,7 @@ namespace MiniJamGame16.Minigame.Impl
         private TextAsset[] _textAssetHard;
         private string _text;
 
-        public int gameScoreValue = 100;
+        private int gameScoreValue = 100;
 
         public override void Init()
         {

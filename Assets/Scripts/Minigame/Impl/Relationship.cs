@@ -18,8 +18,7 @@ namespace MiniJamGame16.Minigame.Impl
 
         private int _pumpCount;
 
-        [SerializeField]
-        public int gameScoreValue = 250;
+        private int gameScoreValue = 250;
 
         private void Awake()
         {
