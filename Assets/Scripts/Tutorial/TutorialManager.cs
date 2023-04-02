@@ -17,7 +17,7 @@ namespace MiniJamGame16.Tutorial
             Instance = this;
         }
 
-        public void AdvanceTutorial(TutorialAdvancement id)
+        /*public void AdvanceTutorial(TutorialAdvancement id)
         {
             if ((int)id == _index)
             {
@@ -28,6 +28,6 @@ namespace MiniJamGame16.Tutorial
                     _tutorial[_index].gameObject.SetActive(true);
                 }
             }
-        }
+        }*/
     }
 }

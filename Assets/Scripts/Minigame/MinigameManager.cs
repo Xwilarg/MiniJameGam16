@@ -41,8 +41,6 @@ namespace MiniJamGame16.Minigame
                     IsActive = false;
                     game.Minigame.gameObject.SetActive(false);
                     _floxbutton.SetActive(false);
-                    TutorialManager.Instance.AdvanceTutorial(TutorialAdvancement.GAME_END);
-                    TutorialManager.Instance.AdvanceTutorial(TutorialAdvancement.END_INSPECTION);
                     _onDone();
                     _inspectionPercent -= 50;
                     if (_inspectionPercent < 0) _inspectionPercent = 0;
@@ -72,7 +70,6 @@ namespace MiniJamGame16.Minigame
             {
                 _inspectionText.text = Translate.Instance.Tr("INSPECTIONON").ToUpperInvariant();
                 _inspectionText.color = Color.red;
-                TutorialManager.Instance.AdvanceTutorial(TutorialAdvancement.INSPECTION);
             }
             IsActive = true;
         }
@@ -92,7 +89,6 @@ namespace MiniJamGame16.Minigame
             {
                 game.Minigame.gameObject.SetActive(false);
             }
-            TutorialManager.Instance.AdvanceTutorial(TutorialAdvancement.GAME_END);
             _onDone();
             _inspectionPercent += 10;
             if (_inspectionPercent > 100) _inspectionPercent = 100;

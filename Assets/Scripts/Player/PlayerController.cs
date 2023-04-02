@@ -58,7 +58,6 @@ namespace MiniJamGame16.Player
                 _detector.Item.IsUsed = !_detector.Item.IsUsed;
                 if (_detector.Item.IsUsed)
                 {
-                    TutorialManager.Instance.AdvanceTutorial(TutorialAdvancement.GRAB_OBJECT);
                     _animator.SetBool("IsGrabbing", true);
                     _detector.Item.transform.position = transform.position;
                     _mov = Vector2.zero;
