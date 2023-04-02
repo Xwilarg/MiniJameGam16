@@ -14,7 +14,7 @@ namespace MiniJamGame16.Menu
         private void Start()
         {
             AudioSystem.Instance.PlayMusic(_bgm);
-            _score.text = $"{Translate.Instance.Tr("SCORE")} {GlobalOptions.Instance.Score}";
+            _score.text = $"{Translate.Instance.Tr("SCORE").ToUpperInvariant()} {GlobalOptions.Instance.Score}";
         }
 
         public void LoadMenu()
