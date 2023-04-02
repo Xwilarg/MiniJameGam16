@@ -37,5 +37,7 @@
     "GAMEOVER2": "Mais t'inquiète pas, il y a toujours...",
     "HARDMODE": "Hard Mode",
     "ON": "ON",
-    "OFF": "OFF"
+    "OFF": "OFF",
+
+    "SCORE": "Score:"
 }

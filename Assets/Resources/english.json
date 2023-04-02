@@ -37,5 +37,7 @@
     "GAMEOVER2": "But don't worry, there is always...",
     "HARDMODE": "Mode difficile",
     "ON": "Activé",
-    "OFF": "Désactivé"
+    "OFF": "Désactivé",
+
+    "SCORE": "Score :"
 }
