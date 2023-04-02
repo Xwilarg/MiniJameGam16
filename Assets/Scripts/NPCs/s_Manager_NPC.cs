@@ -2,6 +2,9 @@ using MiniJamGame16.Minigame;
 using MiniJamGame16.Player;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 /// <summary>
 /// This is the script for the Manager NPC. This NPC will walk back and forth, left to right, pausing as they get to each point they are meant to stop at.
@@ -54,11 +57,26 @@ public class s_Manager_NPC : MonoBehaviour
 
     private bool _isLookingAtPlayer;
 
+    [SerializeField]
+    private Volume _globalVolume;
+
+    [SerializeField]
+    [ColorUsage(true, true)]
+    private Color _sceneColor, _sceneSpottedColor;
+
     void Awake()
     {
         currentTargetPoint = Random.Range(0, pausePoints.Length);     //At level load, randomize which point the manager is going to move to.
         _sr = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
+        if (_globalVolume.profile.TryGet(out ColorAdjustments colorAdjustments))
+        {
+            _colorAdjustments = colorAdjustments;
+        }
+        if (_globalVolume.profile.TryGet(out ChromaticAberration chromaticAberration))
+        {
+            _chromaticAberration = chromaticAberration;
+        }
     }
 
     void FixedUpdate()
@@ -89,8 +107,22 @@ public class s_Manager_NPC : MonoBehaviour
 
     }
 
+    private float spottedColorIntensity = 0f;
+    private ColorAdjustments _colorAdjustments;
+    private ChromaticAberration _chromaticAberration;
+    public bool TEST = false;
+
     private void Update()
     {
+        if (TEST || MinigameManager.Instance.IsInspectionOn)
+        {
+            spottedColorIntensity += Time.deltaTime * 2f;
+        } else {
+            spottedColorIntensity -= Time.deltaTime * 2f;
+        }
+        _colorAdjustments.colorFilter.Interp(_sceneColor, _sceneSpottedColor, spottedColorIntensity);
+        _chromaticAberration.intensity = Mathf.Lerp(0f, 0.6f, spottedColorIntensity);
+        
         // Collider2D hits = Physics2D.OverlapCircle(transform.position, circleCastRadius, LayerMask.GetMask("Player")); //Add player layer later.
         // _isLookingAtPlayer = hits != null; // TODO: Broken
     }

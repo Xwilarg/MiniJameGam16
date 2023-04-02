@@ -1613,6 +1613,42 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1985741535395709881, guid: ec6d5ebba0fd0934b89648801ade4f9e, type: 3}
     - target: {fileID: 6515092551306256269, guid: 101fde2da900ee14db2cc7420c7d3dee, type: 3}
+      propertyPath: _globalVolume
+      value: 
+      objectReference: {fileID: 1347158484}
+    - target: {fileID: 6515092551306256269, guid: 101fde2da900ee14db2cc7420c7d3dee, type: 3}
+      propertyPath: _sceneColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6515092551306256269, guid: 101fde2da900ee14db2cc7420c7d3dee, type: 3}
+      propertyPath: _sceneColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6515092551306256269, guid: 101fde2da900ee14db2cc7420c7d3dee, type: 3}
+      propertyPath: _sceneColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6515092551306256269, guid: 101fde2da900ee14db2cc7420c7d3dee, type: 3}
+      propertyPath: _sceneColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6515092551306256269, guid: 101fde2da900ee14db2cc7420c7d3dee, type: 3}
+      propertyPath: _sceneSpottedColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6515092551306256269, guid: 101fde2da900ee14db2cc7420c7d3dee, type: 3}
+      propertyPath: _sceneSpottedColor.b
+      value: 0.89999986
+      objectReference: {fileID: 0}
+    - target: {fileID: 6515092551306256269, guid: 101fde2da900ee14db2cc7420c7d3dee, type: 3}
+      propertyPath: _sceneSpottedColor.g
+      value: 0.89999986
+      objectReference: {fileID: 0}
+    - target: {fileID: 6515092551306256269, guid: 101fde2da900ee14db2cc7420c7d3dee, type: 3}
+      propertyPath: _sceneSpottedColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6515092551306256269, guid: 101fde2da900ee14db2cc7420c7d3dee, type: 3}
       propertyPath: pausePoints.Array.data[0]
       value: 
       objectReference: {fileID: 1842760882}
