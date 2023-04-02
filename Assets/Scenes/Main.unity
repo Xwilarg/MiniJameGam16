@@ -4142,7 +4142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5458ea0c90256384890318af1d7a27bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startAudio: {fileID: 8300000, guid: e732868d8f91d134ca410983c518cee5, type: 3}
+  _startAudio: {fileID: 8300000, guid: e40fd1a7848be7b44b340824b0941013, type: 3}
 --- !u!1001 &1160699503
 PrefabInstance:
   m_ObjectHideFlags: 0
