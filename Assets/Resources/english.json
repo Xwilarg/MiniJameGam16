@@ -24,5 +24,7 @@
     "ARTIST": "Artist",
     "SPELLCHECK": "Spellcheck",
     "ADDITIONALHELP": "With the additional help of",
-    "AND": "and"
+    "AND": "and",
+
+    "GAMEOVER": "Game Over"
 }

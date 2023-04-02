@@ -24,5 +24,7 @@
     "ARTIST": "Artiste",
     "SPELLCHECK": "Vérification orthographique",
     "ADDITIONALHELP": "Avec l'aide additionel de",
-    "AND": "et"
+    "AND": "et",
+
+    "GAMEOVER": "Partie finie"
 }
