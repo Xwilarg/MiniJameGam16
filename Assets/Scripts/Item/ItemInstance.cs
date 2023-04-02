@@ -37,7 +37,9 @@ namespace MiniJamGame16.Item
         {
             if (collision.collider.CompareTag("Burner"))
             {
-                collision.collider.GetComponent<BurningFurnace>().TriggerBurningVFX();
+                var burner = collision.collider.GetComponent<BurningFurnace>();
+                burner.TriggerBurningVFX();
+                burner.Burn();
                 Destroy(gameObject);
             }
         }
