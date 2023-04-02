@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using MiniJamGame16.Menu;
+using System.Collections;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -21,8 +22,14 @@ namespace MiniJamGame16.Minigame.Impl
 
         public bool _isInit;
 
-        private int _size = 5;
-        private int _baseNbOfMines = 3;
+        private int _size;
+        private int _baseNbOfMines;
+
+        private void Awake()
+        {
+            _size = GlobalOptions.Instance.MineweeperSize;
+            _baseNbOfMines = GlobalOptions.Instance.MineweeperCount;
+        }
 
         public override void Init()
         {

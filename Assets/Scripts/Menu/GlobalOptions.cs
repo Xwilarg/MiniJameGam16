@@ -24,5 +24,8 @@ namespace MiniJamGame16.Menu
 
         public float Volume { set; get; } = 1f;
         public bool DifficultyHard { set; get; }
+
+        public int MineweeperSize => DifficultyHard ? 10 : 5;
+        public int MineweeperCount => DifficultyHard ? 10 : 3;
     }
 }
