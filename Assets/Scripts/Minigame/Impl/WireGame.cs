@@ -1,4 +1,5 @@
 ﻿using MiniJamGame16.Menu;
+using MiniJamGame16.Systems;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -11,6 +12,9 @@ namespace MiniJamGame16.Minigame.Impl
 
         [SerializeField]
         private Wire[] _wires;
+
+        [SerializeField]
+        private AudioClip _wireSFX;
 
         public override void Init()
         {
@@ -55,6 +59,7 @@ namespace MiniJamGame16.Minigame.Impl
                     - button.localPosition + Vector3.up * 15f,
                 });
                 _target = null;
+                AudioSystem.Instance.PlaySound(_wireSFX);
                 foreach (var wire in _wires)
                 {
                     if (!wire.IsValid)

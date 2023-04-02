@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Minigame.Impl;
+using MiniJamGame16.Systems;
 using MiniJamGame16.Translation;
 using System.Collections;
 using TMPro;
@@ -16,6 +17,9 @@ namespace MiniJamGame16.Minigame.Impl
         private Button _button;
         private TMP_Text _bText;
 
+        [SerializeField]
+        private AudioClip _heartbeatSFX;
+
         private int _pumpCount;
 
         private void Awake()
@@ -32,6 +36,7 @@ namespace MiniJamGame16.Minigame.Impl
 
         public void Pump()
         {
+            AudioSystem.Instance.PlaySound(_heartbeatSFX);
             if (_cursor.IsPosOk())
             {
                 _pumpCount--;
