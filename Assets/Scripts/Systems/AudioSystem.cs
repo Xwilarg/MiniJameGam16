@@ -5,20 +5,20 @@ namespace MiniJamGame16.Systems
     public class AudioSystem : MonoBehaviour
     {
         [SerializeField] private AudioSource _musicSource;
-        [SerializeField] private AudioSource _soundsSource;
 
-        public static AudioSystem Instance { get; private set; }
-
-        private void Awake()
+        private static AudioSystem _instance;
+        public static AudioSystem Instance
         {
-            if (Instance != null) Destroy(gameObject);
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-
-        private void OnApplicationQuit() {
-            Instance = null;
-            Destroy(gameObject);
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new GameObject("Audio System", typeof(AudioSystem), typeof(AudioSource)).GetComponent<AudioSystem>();
+                    _instance._musicSource = _instance.GetComponent<AudioSource>();
+                    _instance._musicSource.loop = true;
+                }
+                return _instance;
+            }
         }
 
         public void PlayMusic(AudioClip clip) {
@@ -27,7 +27,7 @@ namespace MiniJamGame16.Systems
         }
 
         public void PlaySound(AudioClip clip, float vol = 1) {
-            _soundsSource.PlayOneShot(clip, vol);
+            _musicSource.PlayOneShot(clip, vol);
         }
     }
 }
