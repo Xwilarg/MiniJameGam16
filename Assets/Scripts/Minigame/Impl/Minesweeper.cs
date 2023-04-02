@@ -21,8 +21,8 @@ namespace MiniJamGame16.Minigame.Impl
 
         public bool _isInit;
 
-        private int _size = 6;
-        private int _baseNbOfMines = 4;
+        private int _size = 5;
+        private int _baseNbOfMines = 3;
 
         public override void Init()
         {
