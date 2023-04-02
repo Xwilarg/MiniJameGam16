@@ -14,6 +14,8 @@ namespace MiniJamGame16.Minigame.Impl
 
         [SerializeField]
         private TextAsset[] _textAsset;
+        [SerializeField]
+        private TextAsset[] _textAssetHard;
         private string _text;
 
         public override void Init()

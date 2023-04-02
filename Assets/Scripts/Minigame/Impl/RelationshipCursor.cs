@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using MiniJamGame16.Menu;
+using UnityEngine;
 
 namespace Assets.Scripts.Minigame.Impl
 {
@@ -18,7 +19,7 @@ namespace Assets.Scripts.Minigame.Impl
 
         private void ResetSpeed()
         {
-            _baseSpeed = Random.Range(255, 1500);
+            _baseSpeed = Random.Range(GlobalOptions.Instance.RelationshipMin, 1500);
         }
 
         private void Update()
