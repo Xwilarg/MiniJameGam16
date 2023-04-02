@@ -118,12 +118,12 @@ public class s_Manager_NPC : MonoBehaviour
         {
             if (_state == 1)
             {
-                spottedColorIntensity += Time.deltaTime * 3f;
+                spottedColorIntensity += Time.deltaTime * 5f;
                 if (spottedColorIntensity >= 1f) _state = 2;
             }
             else
             {
-                spottedColorIntensity -= Time.deltaTime * 3f;
+                spottedColorIntensity -= Time.deltaTime * 5f;
                 if (spottedColorIntensity <= 0f) _state = 0;
             }
             _colorAdjustments.colorFilter.Interp(_sceneColor, _sceneSpottedColor, spottedColorIntensity);

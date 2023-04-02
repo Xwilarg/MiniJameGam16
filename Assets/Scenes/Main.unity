@@ -3414,8 +3414,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cursor: {fileID: 2088484937}
   _button: {fileID: 1982297853}
-  _heartbeatSFX: {fileID: 0}
-  _heart: {fileID: 0}
+  _heartbeatSFX: {fileID: 8300000, guid: 146d5c55623602e478f7c4572d807e5a, type: 3}
+  _heart: {fileID: 132457273}
 --- !u!1 &622256025
 GameObject:
   m_ObjectHideFlags: 0
@@ -3795,8 +3795,8 @@ MonoBehaviour:
   _parent: {fileID: 1582107918}
   _container: {fileID: 965529179556843989, guid: 05ce22f7601bac84abbf4468ee0ef6ba, type: 3}
   _tile: {fileID: 978295252178753434, guid: 5cccdb371b79f1945847fe5f05e504e1, type: 3}
-  _clipSFX: {fileID: 0}
-  _bombSFX: {fileID: 0}
+  _clipSFX: {fileID: 8300000, guid: 2a5a1bb230652f24988a75b41d4dcfb7, type: 3}
+  _bombSFX: {fileID: 8300000, guid: 1bdd619180e872a45a1ffd1cbad2d814, type: 3}
 --- !u!1 &672153910
 GameObject:
   m_ObjectHideFlags: 0
@@ -8322,7 +8322,7 @@ MonoBehaviour:
   - {fileID: 1654062092}
   - {fileID: 1383482113}
   - {fileID: 1519904392}
-  _wireSFX: {fileID: 0}
+  _wireSFX: {fileID: 8300000, guid: 92397fe95e3026e44904b91068250ed5, type: 3}
 --- !u!1001 &2124354440
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8469,7 +8469,7 @@ MonoBehaviour:
   - {fileID: 4900000, guid: e32a3296c749cab41bf016f27725af68, type: 3}
   - {fileID: 4900000, guid: 5e80b73e9df462b4eab1e48d8824c953, type: 3}
   - {fileID: 4900000, guid: 843a476f0fb7b474da66b278c817a12f, type: 3}
-  _bip: {fileID: 0}
+  _bip: {fileID: 8300000, guid: 2a5a1bb230652f24988a75b41d4dcfb7, type: 3}
 --- !u!1001 &103213341220542776
 PrefabInstance:
   m_ObjectHideFlags: 0
