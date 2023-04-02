@@ -9,7 +9,7 @@ namespace MiniJamGame16.Menu
     {
         [SerializeField] private AudioClip _menuAudio;
 
-        private void Awake()
+        private void Start()
         {
             AudioSystem.Instance.PlayMusic(_menuAudio);
         }
