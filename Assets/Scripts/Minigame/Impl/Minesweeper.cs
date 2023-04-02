@@ -21,7 +21,8 @@ namespace MiniJamGame16.Minigame.Impl
 
         public bool _isInit;
 
-        private int _size = 5;
+        private int _size = 6;
+        private int _baseNbOfMines = 4;
 
         public override void Init()
         {
@@ -134,7 +135,7 @@ namespace MiniJamGame16.Minigame.Impl
             }
             if (!_isInit)
             {
-                var mineCount = _size;
+                var mineCount = _baseNbOfMines;
                 _isInit = true;
                 while (mineCount > 0)
                 {
