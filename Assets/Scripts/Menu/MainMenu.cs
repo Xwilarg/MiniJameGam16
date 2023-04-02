@@ -19,6 +19,11 @@ namespace MiniJamGame16.Menu
             SceneManager.LoadScene("Main");
         }
 
+        public void EasterEgg()
+        {
+            SceneManager.LoadScene("Eye");
+        }
+
         public void SetFrench()
         {
             Translate.Instance.CurrentLanguage = "french";
