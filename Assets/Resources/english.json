@@ -44,9 +44,9 @@
     "SCORE": "Score :",
 
     "HELP1": "Welcome to your new job!",
-    "HELP2": "Your goal is to fix everything you can, press 'E' to take a crate and complete the associated task",
-    "HELP3": "You can also use the <color=red>FLOX TAPE</color> button to directly complete a task, but don't do that when your manager is looking at you!",
-    "HELP4": "The more you use this button or the more your manager see you using it, the more your inspection chance increases!",
-    "HELP5": "When that happen, you'll have to complete your task the normal way",
-    "HELP6": "Good luck!"
+    "HELP2": "Our goal here is to fix everything and anything imaginable, so press 'E' to pickup a crate and complete the repair job inside.",
+    "HELP3": "Please note that <color=red>FLOX TAPE</color> is expressly forbidden from the factory floor. If we suspect an employee is using <color=red>FLOX TAPE</color> to skip doing their job properly, you'll be under inspection until we're satisfied.",
+    "HELP4": "(Getting caught will raise the Inspection Meter. While under inspection, you will be unable to use <color=red>FLOX TAPE</color> to instantly complete the job.)",
+    "HELP5": "We hope you'll enjoy working with us here at our fantastic repair factory!",
+    "HELP6": "Signed, Management"
 }
