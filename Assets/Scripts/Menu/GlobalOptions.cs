@@ -30,5 +30,7 @@ namespace MiniJamGame16.Menu
         public int WiresMax => DifficultyHard ? 20 : 10;
         public int RelationshipMin => DifficultyHard ? 755 : 255;
         public int RelationshipBeatCount => DifficultyHard ? 10 : 5;
+
+        public int Score { set; get; }
     }
 }

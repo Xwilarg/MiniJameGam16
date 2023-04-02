@@ -1,4 +1,5 @@
-﻿using MiniJamGame16.Translation;
+﻿using MiniJamGame16.Menu;
+using MiniJamGame16.Translation;
 using MiniJamGame16.Tutorial;
 using System;
 using System.Linq;
@@ -48,8 +49,14 @@ namespace MiniJamGame16.Minigame
                     _inspectionText.text = $"{Translate.Instance.Tr("INSPECTIONCHANCES").ToUpperInvariant()} {_inspectionPercent}%";
                     _inspectionText.color = Color.white;
                     IsInspectionOn = false;
+                    GlobalOptions.Instance.Score++;
                 };
             }
+        }
+
+        private void Start()
+        {
+            GlobalOptions.Instance.Score = 0;
         }
 
         public void Enable(MinigameType type, Action onDone)
@@ -91,6 +98,7 @@ namespace MiniJamGame16.Minigame
             if (_inspectionPercent > 100) _inspectionPercent = 100;
             _inspectionText.text = $"{Translate.Instance.Tr("INSPECTIONCHANCES").ToUpperInvariant()} {_inspectionPercent}%";
             _inspectionText.color = Color.white;
+            GlobalOptions.Instance.Score++;
         }
     }
 }
