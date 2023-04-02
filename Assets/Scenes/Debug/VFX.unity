@@ -3371,6 +3371,7 @@ MonoBehaviour:
   _textAsset:
   - {fileID: 0}
   _textAssetHard: []
+  _bip: {fileID: 0}
 --- !u!1001 &103213341220542776
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -4344,6 +4344,7 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 5432832fbde099c4abde06968d244b4a, type: 3}
   - {fileID: 4900000, guid: 07ac5e0c114ccac44b98824e4271e453, type: 3}
   _textAssetHard: []
+  _bip: {fileID: 0}
 --- !u!1001 &103213341220542776
 PrefabInstance:
   m_ObjectHideFlags: 0
