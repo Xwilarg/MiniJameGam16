@@ -24,7 +24,7 @@ namespace MiniJamGame16.World
         [SerializeField]
         private TMP_Text _text;
 
-        private int _itemLeft = 40;
+        private int _itemLeft = 20;
         public void Burn()
         {
             _itemLeft--;
