@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Minigame.Impl;
+using MiniJamGame16.Menu;
 using MiniJamGame16.Systems;
 using MiniJamGame16.Translation;
 using System.Collections;
@@ -32,13 +33,14 @@ namespace MiniJamGame16.Minigame.Impl
 
         public override void Init()
         {
-            _pumpCount = 5;
+            _pumpCount = GlobalOptions.Instance.RelationshipBeatCount;
             _bText.text = $"{Translate.Instance.Tr("PUMP").ToUpperInvariant()}\n{_pumpCount} {Translate.Instance.Tr("LEFT").ToUpperInvariant()}";
             _cursor.ResetCursor();
         }
 
         public void Pump()
         {
+            StartCoroutine(Heartbeat());
             AudioSystem.Instance.PlaySound(_heartbeatSFX);
             if (_cursor.IsPosOk())
             {
@@ -54,6 +56,13 @@ namespace MiniJamGame16.Minigame.Impl
                 _button.interactable = false;
                 StartCoroutine(Reload());
             }
+        }
+
+        private IEnumerator Heartbeat()
+        {
+            _heart.color = new Color(.9f, .9f, .9f);
+            yield return new WaitForSeconds(.1f);
+            _heart.color = Color.white;
         }
 
         private IEnumerator Reload()

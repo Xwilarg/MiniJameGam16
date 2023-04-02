@@ -29,5 +29,6 @@ namespace MiniJamGame16.Menu
         public int MineweeperCount => DifficultyHard ? 10 : 3;
         public int WiresMax => DifficultyHard ? 20 : 10;
         public int RelationshipMin => DifficultyHard ? 755 : 255;
+        public int RelationshipBeatCount => DifficultyHard ? 10 : 5;
     }
 }
