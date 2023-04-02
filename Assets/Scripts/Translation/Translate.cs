@@ -13,6 +13,15 @@ namespace MiniJamGame16.Translation
             "french"
         };
 
+        public static string FixFrench(string str)
+        {
+            return str
+                .Replace('ç', 'c')
+                .Replace('à', 'a')
+                .Replace('è', 'e')
+                .Replace('é', 'e');
+        }
+
         private Translate()
         {
             foreach (var lang in _languages)
@@ -50,7 +59,7 @@ namespace MiniJamGame16.Translation
             {
                 sentence = sentence.Replace("{" + i + "}", arguments[i]);
             }
-            return sentence;
+            return FixFrench(sentence);
         }
 
         private string _currentLanguage = "english";

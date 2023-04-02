@@ -18,15 +18,6 @@ namespace MiniJamGame16.Translation
             UpdateText();
         }
 
-        private string FixFrench(string str)
-        {
-            return str
-                .Replace('ç', 'c')
-                .Replace('à', 'a')
-                .Replace('è', 'e')
-                .Replace('é', 'e');
-        }
-
         public void UpdateText()
         {
             var sentence = _original;
@@ -34,7 +25,7 @@ namespace MiniJamGame16.Translation
             {
                 sentence = sentence.Replace(match.Value, Translate.Instance.Tr(match.Groups[1].Value));
             }
-            var s = FixFrench(sentence);
+            var s = Translate.FixFrench(sentence);
             if (_capitalize)
             {
                 s = s.ToUpperInvariant();
