@@ -1,4 +1,4 @@
-﻿using JetBrains.Annotations;
+﻿using System.Collections;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -21,12 +21,7 @@ namespace MiniJamGame16.Minigame.Impl
 
         public bool _isInit;
 
-        private int _size = 10;
-
-        private void Awake()
-        {
-            Init();
-        }
+        private int _size = 8;
 
         public override void Init()
         {
@@ -84,28 +79,48 @@ namespace MiniJamGame16.Minigame.Impl
 
         private void CleanTile(int x, int y)
         {
-            var dir = new[]
+            for (int dy = -1; dy < 2; dy++)
             {
-                Vector2Int.up, Vector2Int.down,
-                Vector2Int.left, Vector2Int.right
-            };
-            foreach (var d in dir)
-            {
-                if (IsInBounds(x + d.x, y + d.y) && _data[y + d.y, x + d.x].Button.interactable)
+                for (int dx = -1; dx < 2; dx++)
                 {
-                    _data[y + d.y, x + d.x].Button.interactable = false;
-                    var count = GetMines(x + d.x, y + d.y);
-                    if (count == 0)
+                    if (IsInBounds(x + dx, y + dy) && _data[y + dy, x + dx].Button.interactable)
                     {
-                        CleanTile(x + d.x, y + d.y);
-                    }
-                    else
-                    {
-                        _data[y + d.y, x + d.x].Text.text = $"{count}";
-                        _data[y + d.y, x + d.x].Text.color = _colors[count - 1];
+                        _data[y + dy, x + dx].Button.interactable = false;
+                        var count = GetMines(x + dx, y + dy);
+                        if (count == 0)
+                        {
+                            CleanTile(x + dx, y + dy);
+                        }
+                        else
+                        {
+                            _data[y + dy, x + dx].Text.text = $"{count}";
+                            _data[y + dy, x + dx].Text.color = _colors[count - 1];
+                        }
                     }
                 }
             }
+        }
+
+        private void ShowAllMines()
+        {
+            for (int y = 0; y < _size; y++)
+            {
+                for (int x = 0; x < _size; x++)
+                {
+                    _data[y, x].Button.interactable = false;
+                    if (_data[y, x].IsMine)
+                    {
+                        _data[y, x].Text.text = "X";
+                        _data[y, x].Text.color = Color.red;
+                    }
+                }
+            }
+        }
+
+        private IEnumerator WaitAndReset()
+        {
+            yield return new WaitForSeconds(2f);
+            Init();
         }
 
         public void Click(int y, int x)
@@ -113,12 +128,13 @@ namespace MiniJamGame16.Minigame.Impl
             _data[y, x].Button.interactable = false;
             if (_data[y, x].IsMine)
             {
-                Debug.Log("lol you lost");
+                ShowAllMines();
+                StartCoroutine(WaitAndReset());
                 return;
             }
             if (!_isInit)
             {
-                var mineCount = 20;
+                var mineCount = _size;
                 _isInit = true;
                 while (mineCount > 0)
                 {
@@ -139,7 +155,7 @@ namespace MiniJamGame16.Minigame.Impl
             }
             else
             {
-
+                CleanTile(x, y);
             }
             if (_data.Cast<MineData>().All(x => x.IsMine || !x.Button.interactable))
             {
