@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using TMPro;
+using Newtonsoft.Json.Bson;
+using UnityEngine.SceneManagement;
 
 namespace MiniJamGame16.World
 {
@@ -18,8 +21,26 @@ namespace MiniJamGame16.World
         [SerializeField]
         private float _burstDuration = 0.4f;
 
+        [SerializeField]
+        private TMP_Text _text;
+
+        private int _itemLeft = 40;
+        public void Burn()
+        {
+            _itemLeft--;
+            if (_itemLeft == 0)
+            {
+                SceneManager.LoadScene("GameOver");
+            }
+            else
+            {
+                _text.text = $"{_itemLeft}";
+            }
+        }
+
         private void Awake()
         {
+            _text.text = $"{_itemLeft}";
             _fireMat.SetColor("_GlowColor", _fireMatColor);
         }
 
