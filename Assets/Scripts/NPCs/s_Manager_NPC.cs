@@ -106,21 +106,29 @@ public class s_Manager_NPC : MonoBehaviour
 
     }
 
+    private int _state = 0;
+
     private float spottedColorIntensity = 0f;
     private ColorAdjustments _colorAdjustments;
     private ChromaticAberration _chromaticAberration;
-    public bool TEST = false;
 
     private void Update()
     {
-        if (TEST || MinigameManager.Instance.IsInspectionOn)
+        if (_state != 0)
         {
-            spottedColorIntensity += Time.deltaTime * 2f;
-        } else {
-            spottedColorIntensity -= Time.deltaTime * 2f;
+            if (_state == 1)
+            {
+                spottedColorIntensity += Time.deltaTime * 3f;
+                if (spottedColorIntensity >= 1f) _state = 2;
+            }
+            else
+            {
+                spottedColorIntensity -= Time.deltaTime * 3f;
+                if (spottedColorIntensity <= 0f) _state = 0;
+            }
+            _colorAdjustments.colorFilter.Interp(_sceneColor, _sceneSpottedColor, spottedColorIntensity);
+            _chromaticAberration.intensity.value = Mathf.Lerp(0f, 1f, spottedColorIntensity);
         }
-        _colorAdjustments.colorFilter.Interp(_sceneColor, _sceneSpottedColor, spottedColorIntensity);
-        _chromaticAberration.intensity.value = Mathf.Lerp(0f, 0.6f, spottedColorIntensity);
         
         // Collider2D hits = Physics2D.OverlapCircle(transform.position, circleCastRadius, LayerMask.GetMask("Player")); //Add player layer later.
         // _isLookingAtPlayer = hits != null; // TODO: Broken
@@ -150,6 +158,7 @@ public class s_Manager_NPC : MonoBehaviour
         if (_isLookingAtPlayer)
         {
             MinigameManager.Instance.IncreaseError();
+            _state = 1;
         }
         else
         {
