@@ -1,3 +1,4 @@
+using MiniJamGame16.Menu;
 using UnityEngine;
 
 namespace MiniJamGame16.Systems
@@ -19,6 +20,16 @@ namespace MiniJamGame16.Systems
                 }
                 return _instance;
             }
+        }
+
+        private void Start()
+        {
+            SetVolume(GlobalOptions.Instance.Volume);
+        }
+
+        public void SetVolume(float value)
+        {
+            _musicSource.volume = value;
         }
 
         public void PlayMusic(AudioClip clip) {

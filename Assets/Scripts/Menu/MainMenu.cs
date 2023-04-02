@@ -1,7 +1,9 @@
 ﻿using MiniJamGame16.Systems;
 using MiniJamGame16.Translation;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace MiniJamGame16.Menu
 {
@@ -32,6 +34,29 @@ namespace MiniJamGame16.Menu
         public void SetEnglish()
         {
             Translate.Instance.CurrentLanguage = "english";
+        }
+
+        [SerializeField]
+        private Slider _slider;
+
+        [SerializeField]
+        private TMP_Text _difficulty;
+
+        private void Awake()
+        {
+            _slider.value = GlobalOptions.Instance.Volume;
+            _difficulty.text = $"{Translate.Instance.Tr("HARDMODE")} {Translate.Instance.Tr(GlobalOptions.Instance.DifficultyHard ? "ON" : "OFF")}";
+        }
+
+        public void OnVolumeChange(float value)
+        {
+            GlobalOptions.Instance.Volume = value;
+            AudioSystem.Instance.SetVolume(value);
+        }
+
+        public void ToggleDifficulty()
+        {
+            GlobalOptions.Instance.DifficultyHard = !GlobalOptions.Instance.DifficultyHard;
         }
     }
 }

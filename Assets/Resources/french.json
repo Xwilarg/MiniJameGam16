@@ -1,6 +1,8 @@
 {
     "PLAY": "Jouer",
+    "OPTIONS": "Options",
     "CREDITS": "Crédits",
+    "DIFFICULTY": "Difficulty",
 
     "TUTO1": "T'es pas payé à regardé ton tel!\nAttrape un object avec E et répare le avant qu'il tombe dans l'incinérateur !",
     "TUTO2": "Ca à l'air pénible hein ?\nBah tant pis car c'est ton boulot !\nEt ne ne pense même à pas utiliser ce bouton 'flox tape' quand je regarde !\n La douleur et la sueur font partie de notre devise",
@@ -27,5 +29,8 @@
     "AND": "et",
 
     "GAMEOVER": "Partie finie",
-    "GAMEOVER2": "Mais t'inquiète pas, il y a toujours..."
+    "GAMEOVER2": "Mais t'inquiète pas, il y a toujours...",
+    "HARDMODE": "Hard Mode",
+    "ON": "ON",
+    "OFF": "OFF"
 }
