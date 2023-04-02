@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using MiniJamGame16.Menu;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -21,12 +22,12 @@ namespace MiniJamGame16.Minigame.Impl
             }
             _target = null;
 
-            _wires.OrderBy(_ => Random.value);
+            _wires = _wires.OrderBy(_ => Random.value).ToArray();
             for (int i = 0; i < _wires.Length; i++)
             {
                 var target = i + 1;
-                var a = Random.Range(3, 13);
-                var b = Random.Range(3, 13);
+                var a = Random.Range(3, GlobalOptions.Instance.WiresMax);
+                var b = Random.Range(3, GlobalOptions.Instance.WiresMax);
                 var c = (a * b) - target;
                 _wires[i].SetMath($"{a} x {b} - {c}", target);
             }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using MiniJamGame16.Menu;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -14,13 +15,16 @@ namespace MiniJamGame16.Minigame.Impl
 
         [SerializeField]
         private TextAsset[] _textAsset;
+        [SerializeField]
+        private TextAsset[] _textAssetHard;
         private string _text;
 
         public int gameScoreValue = 100;
 
         public override void Init()
         {
-            _text = _textAsset[Random.Range(0, _textAsset.Length)].text.Replace("\r", "");
+            var target = GlobalOptions.Instance.DifficultyHard ? _textAssetHard : _textAsset;
+            _text = target[Random.Range(0, target.Length)].text.Replace("\r", "");
             _referenceText.text = _text;
             _input.text = string.Empty;
             _input.Select(); // TODO: Only works the first time?

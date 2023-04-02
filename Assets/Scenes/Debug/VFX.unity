@@ -3274,7 +3274,6 @@ MonoBehaviour:
   - {fileID: 1654062092}
   - {fileID: 1383482113}
   - {fileID: 1519904392}
-  gameScoreValue: 500
 --- !u!1 &2134573229
 GameObject:
   m_ObjectHideFlags: 0
@@ -3371,7 +3370,7 @@ MonoBehaviour:
   _input: {fileID: 123852935}
   _textAsset:
   - {fileID: 0}
-  gameScoreValue: 100
+  _textAssetHard: []
 --- !u!1001 &103213341220542776
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,0 +1,10 @@
+class CheeseFixer : ABugFixer<Cheese>
+{
+    public override void Fix(Cheese data)
+    {
+        if (data.Smell < 50)
+        {
+            return;
+        }
+    }
+}

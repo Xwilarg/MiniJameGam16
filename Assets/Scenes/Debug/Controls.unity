@@ -4245,7 +4245,6 @@ MonoBehaviour:
   - {fileID: 1654062092}
   - {fileID: 1383482113}
   - {fileID: 1519904392}
-  gameScoreValue: 500
 --- !u!1 &2134573229
 GameObject:
   m_ObjectHideFlags: 0
@@ -4344,7 +4343,7 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 59203bc48f830b344857e201e0dbe6f5, type: 3}
   - {fileID: 4900000, guid: 5432832fbde099c4abde06968d244b4a, type: 3}
   - {fileID: 4900000, guid: 07ac5e0c114ccac44b98824e4271e453, type: 3}
-  gameScoreValue: 100
+  _textAssetHard: []
 --- !u!1001 &103213341220542776
 PrefabInstance:
   m_ObjectHideFlags: 0

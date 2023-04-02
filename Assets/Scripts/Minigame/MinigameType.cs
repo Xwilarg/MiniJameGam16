@@ -4,6 +4,7 @@
     {
         IT,
         WIRES,
-        RELATIONSHIP
+        RELATIONSHIP,
+        MINESWEEPER
     }
 }

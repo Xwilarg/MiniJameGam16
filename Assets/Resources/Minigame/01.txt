@@ -1,8 +1,5 @@
-class DroneFixer : BugFixer<Drone>
+public override void Fix(Drone data)
 {
-    public override void Fix(Drone data)
-    {
-        if (data.IsGoingToCrashIntoEachOther())
-            data.Dont();
-    }
+    if (data.IsGoingToCrashIntoEachOther())
+        data.Dont();
 }
